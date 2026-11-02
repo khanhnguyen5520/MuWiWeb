@@ -1,0 +1,150 @@
+<%- include('../partials/admin-header') %>
+<%- include('../partials/admin-sidebar') %>
+
+<% if (typeof success !== 'undefined' && success === 'saved') { %>
+  <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 mb-4" role="alert">
+    <i class="fa-solid fa-circle-check fs-5"></i>
+    <div><strong>Lưu thành công!</strong> Cài đặt website đã được cập nhật.</div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+<form action="/admin/settings" method="POST" enctype="multipart/form-data">
+
+  <div class="row g-4">
+    <!-- CỘT TRÁI (8 COLS): Cài đặt thông tin thương hiệu -->
+    <div class="col-lg-8">
+      <!-- 1. THƯƠNG HIỆU & LOGO -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title"><i class="fa-solid fa-gem text-primary me-2"></i>1. Nhận Diện Thương Hiệu</h3>
+        </div>
+        <div class="admin-card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Tên công ty / thương hiệu *</label>
+              <input type="text" name="siteName" class="form-control" value="<%= settings.siteName %>" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Chữ hiển thị trên Logo (khi không dùng ảnh)</label>
+              <input type="text" name="logoText" class="form-control" value="<%= settings.logoText %>">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Slogan công ty</label>
+              <input type="text" name="slogan" class="form-control" value="<%= settings.slogan %>">
+            </div>
+            <div class="col-md-8">
+              <label class="form-label">URL Ảnh Logo (hoặc tải ảnh từ máy)</label>
+              <input type="text" name="logoUrl" class="form-control" value="<%= settings.logoUrl || '' %>">
+              <div class="mt-2">
+                <input type="file" name="logoFile" class="form-control form-control-sm" accept="image/*" data-preview="logoPreview">
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <label class="form-label d-block">Xem trước Logo</label>
+              <% if (settings.logoUrl) { %>
+                <img id="logoPreview" src="<%= settings.logoUrl %>" alt="Logo" class="p-2 border rounded" style="max-height: 60px;">
+              <% } else { %>
+                <img id="logoPreview" src="" alt="Chưa có logo" class="p-2 border rounded" style="max-height: 60px; display:none;">
+                <span class="badge bg-light text-dark border p-2">Đang dùng Logo Text</span>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. MẠNG XÃ HỘI & LIÊN KẾT -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title"><i class="fa-solid fa-share-nodes text-primary me-2"></i>2. Mạng Xã Hội</h3>
+        </div>
+        <div class="admin-card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label"><i class="fa-brands fa-facebook text-primary me-1"></i>Link Facebook</label>
+              <input type="url" name="facebook" class="form-control" value="<%= settings.facebook || '' %>" placeholder="https://facebook.com/...">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><i class="fa-brands fa-linkedin text-primary me-1"></i>Link LinkedIn</label>
+              <input type="url" name="linkedin" class="form-control" value="<%= settings.linkedin || '' %>" placeholder="https://linkedin.com/...">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><i class="fa-brands fa-youtube text-danger me-1"></i>Link YouTube</label>
+              <input type="url" name="youtube" class="form-control" value="<%= settings.youtube || '' %>" placeholder="https://youtube.com/...">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><i class="fa-solid fa-comment-dots text-info me-1"></i>Link Zalo Chat</label>
+              <input type="text" name="zalo" class="form-control" value="<%= settings.zalo || '' %>" placeholder="https://zalo.me/0988xxxxxx">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. CẤU HÌNH SEO MẶC ĐỊNH -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title"><i class="fa-solid fa-magnifying-glass text-primary me-2"></i>3. Cấu Hình SEO & Chân Trang</h3>
+        </div>
+        <div class="admin-card-body">
+          <div class="mb-3">
+            <label class="form-label">Tiêu đề SEO mặc định (Meta Title)</label>
+            <input type="text" name="metaTitle" class="form-control" value="<%= settings.metaTitle %>">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Mô tả SEO mặc định (Meta Description)</label>
+            <textarea name="metaDesc" class="form-control" rows="3"><%= settings.metaDesc %></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Dòng bản quyền Footer</label>
+            <input type="text" name="copyrightText" class="form-control" value="<%= settings.copyrightText %>">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CỘT PHẢI (4 COLS): Thông tin liên lạc chung -->
+    <div class="col-lg-4">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title"><i class="fa-solid fa-phone text-primary me-2"></i>Liên Hệ Chung</h3>
+        </div>
+        <div class="admin-card-body">
+          <div class="mb-3">
+            <label class="form-label">Hotline</label>
+            <input type="text" name="hotline" class="form-control" value="<%= settings.hotline %>" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Điện thoại di động</label>
+            <input type="text" name="phone" class="form-control" value="<%= settings.phone %>">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" value="<%= settings.email %>" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Địa chỉ trụ sở</label>
+            <textarea name="address" class="form-control" rows="2" required><%= settings.address %></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Chi nhánh</label>
+            <textarea name="branchAddress" class="form-control" rows="2"><%= settings.branchAddress || '' %></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Giờ làm việc</label>
+            <input type="text" name="workingHours" class="form-control" value="<%= settings.workingHours %>">
+          </div>
+        </div>
+      </div>
+
+      <div class="d-grid gap-2 mb-4">
+        <button type="submit" class="btn btn-primary py-2 fw-bold shadow">
+          <i class="fa-solid fa-floppy-disk me-2"></i>Lưu Cài Đặt Website
+        </button>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+<%- include('../partials/admin-footer') %>
+

@@ -1,0 +1,148 @@
+<%- include('partials/header') %>
+
+<!-- BANNER -->
+<section class="page-banner">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/"><i class="fa-solid fa-house me-1"></i>Trang Chủ</a></li>
+        <li class="breadcrumb-item"><a href="/tuyen-dung">Tuyển Dụng</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= job.title %></li>
+      </ol>
+    </nav>
+    <span class="badge bg-primary px-3 py-2 mb-2"><%= job.department %></span>
+    <h1><%= job.title %></h1>
+    <div class="d-flex flex-wrap gap-3 mt-3 text-light">
+      <span><i class="fa-solid fa-location-dot me-1 text-primary"></i><%= job.location %></span>
+      <span><i class="fa-solid fa-money-bill-wave me-1 text-success"></i><%= job.salary %></span>
+      <span><i class="fa-solid fa-briefcase me-1 text-primary"></i><%= job.type %></span>
+      <span><i class="fa-regular fa-clock me-1 text-warning"></i>Hạn nộp: <%= job.deadline || 'Thường xuyên' %></span>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- CỘT CHI TIẾT (8 COLS) -->
+      <div class="col-lg-8">
+        <div class="service-content-card">
+          <!-- Mô tả công việc -->
+          <h4 class="fw-bold mb-3"><i class="fa-solid fa-file-lines text-primary me-2"></i>Mô Tả Công Việc</h4>
+          <p class="text-secondary mb-4"><%= job.description %></p>
+
+          <!-- Yêu cầu ứng viên -->
+          <h4 class="fw-bold mb-3"><i class="fa-solid fa-list-check text-primary me-2"></i>Yêu Cầu Ứng Viên</h4>
+          <% if (job.requirements && job.requirements.length) { %>
+            <ul class="mb-4 text-secondary">
+              <% job.requirements.forEach(function(req) { %>
+                <li class="mb-2"><%= req %></li>
+              <% }); %>
+            </ul>
+          <% } %>
+
+          <!-- Quyền lợi -->
+          <h4 class="fw-bold mb-3"><i class="fa-solid fa-gift text-primary me-2"></i>Quyền Lợi & Đãi Ngộ</h4>
+          <% if (job.benefits && job.benefits.length) { %>
+            <ul class="mb-4 text-secondary">
+              <% job.benefits.forEach(function(ben) { %>
+                <li class="mb-2"><%= ben %></li>
+              <% }); %>
+            </ul>
+          <% } %>
+
+          <!-- FORM ỨNG TUYỂN VỊ TRÍ NÀY -->
+          <div class="mt-5 pt-4 border-top" id="apply">
+            <div class="p-4 bg-light rounded-4 border">
+              <h4 class="fw-bold fs-5 mb-2">Ứng Tuyển Vị Trí: <%= job.title %></h4>
+              <p class="text-secondary small mb-3">Vui lòng hoàn tất thông tin và đính kèm CV để chúng tôi liên hệ phỏng vấn:</p>
+
+              <form action="/tuyen-dung/ung-tuyen" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="jobId" value="<%= job.id %>">
+                <input type="hidden" name="jobTitle" value="<%= job.title %>">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label small fw-semibold">Họ và tên *</label>
+                    <input type="text" name="fullName" class="form-control" placeholder="Nguyễn Văn A" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label small fw-semibold">Số điện thoại *</label>
+                    <input type="tel" name="phone" class="form-control" placeholder="0988xxxxxx" required>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label small fw-semibold">Địa chỉ Email *</label>
+                    <input type="email" name="email" class="form-control" placeholder="email@gmail.com" required>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label small fw-semibold">Tải lên tệp CV (PDF/DOC, tối đa 10MB) *</label>
+                    <input type="file" name="cv" class="form-control" accept=".pdf,.doc,.docx" required>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label small fw-semibold">Thư giới thiệu / Ghi chú</label>
+                    <textarea name="note" class="form-control" rows="3" placeholder="Giới thiệu nhanh kinh nghiệm làm việc hoặc link hồ sơ cá nhân..."></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary w-100 fw-bold py-2">
+                      <i class="fa-solid fa-paper-plane me-1"></i> Gửi Hồ Sơ Ứng Tuyển Ngay
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CỘT SIDEBAR (4 COLS) -->
+      <div class="col-lg-4">
+        <div class="service-sidebar-card">
+          <h5 class="fw-bold mb-3">Thông Tin Chung</h5>
+          <ul class="list-unstyled small text-secondary mb-0 d-flex flex-column gap-3">
+            <li class="d-flex justify-content-between border-bottom pb-2">
+              <span class="text-muted">Phòng ban:</span>
+              <strong class="text-dark"><%= job.department %></strong>
+            </li>
+            <li class="d-flex justify-content-between border-bottom pb-2">
+              <span class="text-muted">Địa điểm:</span>
+              <strong class="text-dark"><%= job.location %></strong>
+            </li>
+            <li class="d-flex justify-content-between border-bottom pb-2">
+              <span class="text-muted">Hình thức:</span>
+              <strong class="text-dark"><%= job.type %></strong>
+            </li>
+            <li class="d-flex justify-content-between border-bottom pb-2">
+              <span class="text-muted">Kinh nghiệm:</span>
+              <strong class="text-dark"><%= job.experience %></strong>
+            </li>
+            <li class="d-flex justify-content-between border-bottom pb-2">
+              <span class="text-muted">Mức lương:</span>
+              <strong class="text-success fw-bold"><%= job.salary %></strong>
+            </li>
+            <li class="d-flex justify-content-between">
+              <span class="text-muted">Hạn nộp:</span>
+              <strong class="text-danger"><%= job.deadline || 'Thường xuyên' %></strong>
+            </li>
+          </ul>
+        </div>
+
+        <% if (otherJobs && otherJobs.length > 0) { %>
+          <div class="service-sidebar-card">
+            <h5 class="fw-bold mb-3">Vị Trí Khác</h5>
+            <div class="d-flex flex-column gap-3">
+              <% otherJobs.slice(0, 3).forEach(function(oj) { %>
+                <div class="border-bottom pb-2">
+                  <h6 class="mb-1"><a href="/tuyen-dung/<%= oj.id %>" class="text-dark hover-primary"><%= oj.title %></a></h6>
+                  <div class="small text-muted"><%= oj.salary %> • <%= oj.location %></div>
+                </div>
+              <% }); %>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+

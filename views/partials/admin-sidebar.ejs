@@ -1,0 +1,141 @@
+<!-- Admin Sidebar -->
+<aside class="admin-sidebar">
+  <a href="/admin" class="admin-brand">
+    <div class="brand-icon" style="width:32px; height:32px; font-size:1rem;"><i class="fa-solid fa-cube"></i></div>
+    <span>TechVision Admin</span>
+  </a>
+
+  <div class="admin-nav-category">Tổng Quan</div>
+  <ul class="admin-nav">
+    <li class="admin-nav-item">
+      <a href="/admin" class="admin-nav-link <%= activeTab === 'dashboard' ? 'active' : '' %>">
+        <i class="fa-solid fa-gauge-high"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="admin-nav-category">Quản Lý Trang Web</div>
+  <ul class="admin-nav">
+    <li class="admin-nav-item">
+      <a href="/admin/pages/home" class="admin-nav-link <%= activeTab === 'pages-home' ? 'active' : '' %>">
+        <i class="fa-solid fa-house"></i>
+        <span>Sửa Trang Chủ</span>
+      </a>
+    </li>
+    <li class="admin-nav-item">
+      <a href="/admin/services" class="admin-nav-link <%= activeTab === 'services' ? 'active' : '' %>">
+        <i class="fa-solid fa-cubes"></i>
+        <span>Sửa 5 Trang Dịch Vụ</span>
+      </a>
+    </li>
+    <li class="admin-nav-item">
+      <a href="/admin/pages/recruitment" class="admin-nav-link <%= activeTab === 'pages-recruitment' ? 'active' : '' %>">
+        <i class="fa-solid fa-user-plus"></i>
+        <span>Sửa Trang Tuyển Dụng</span>
+      </a>
+    </li>
+    <li class="admin-nav-item">
+      <a href="/admin/jobs" class="admin-nav-link <%= activeTab === 'jobs' ? 'active' : '' %>">
+        <i class="fa-solid fa-briefcase"></i>
+        <span>Tin Tuyển Dụng</span>
+      </a>
+    </li>
+    <li class="admin-nav-item">
+      <a href="/admin/pages/contact" class="admin-nav-link <%= activeTab === 'pages-contact' ? 'active' : '' %>">
+        <i class="fa-solid fa-headset"></i>
+        <span>Sửa Trang Liên Hệ</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="admin-nav-category">Tương Tác Khách Hàng</div>
+  <ul class="admin-nav">
+    <li class="admin-nav-item">
+      <a href="/admin/messages" class="admin-nav-link <%= activeTab === 'messages' ? 'active' : '' %>">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Hộp Thư Liên Hệ</span>
+        <% if (unreadMessagesCount > 0) { %>
+          <span class="badge bg-danger ms-auto"><%= unreadMessagesCount %></span>
+        <% } %>
+      </a>
+    </li>
+    <li class="admin-nav-item">
+      <a href="/admin/applications" class="admin-nav-link <%= activeTab === 'applications' ? 'active' : '' %>">
+        <i class="fa-solid fa-id-card"></i>
+        <span>Hồ Sơ Ứng Tuyển</span>
+        <% if (newAppsCount > 0) { %>
+          <span class="badge bg-warning text-dark ms-auto"><%= newAppsCount %></span>
+        <% } %>
+      </a>
+    </li>
+  </ul>
+
+  <div class="admin-nav-category">Cấu Hình & Tài Khoản</div>
+  <ul class="admin-nav">
+    <li class="admin-nav-item">
+      <a href="/admin/settings" class="admin-nav-link <%= activeTab === 'settings' ? 'active' : '' %>">
+        <i class="fa-solid fa-sliders"></i>
+        <span>Cài Đặt Website</span>
+      </a>
+    </li>
+    <li class="admin-nav-item">
+      <a href="/admin/profile" class="admin-nav-link <%= activeTab === 'profile' ? 'active' : '' %>">
+        <i class="fa-solid fa-user-gear"></i>
+        <span>Tài Khoản & Mật Khẩu</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="admin-sidebar-footer">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center gap-2">
+        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 34px; height: 34px; font-weight: 700;">
+          <%= currentUser ? currentUser.username[0].toUpperCase() : 'A' %>
+        </div>
+        <div class="text-truncate" style="max-width: 120px;">
+          <div class="small fw-bold text-white text-truncate"><%= currentUser ? currentUser.fullName : 'Admin' %></div>
+          <div class="text-muted" style="font-size: 0.72rem;">Quản trị viên</div>
+        </div>
+      </div>
+      <a href="/admin/logout" class="text-danger" title="Đăng xuất">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<!-- Admin Main Container -->
+<div class="admin-main">
+  <!-- Admin Topbar -->
+  <header class="admin-topbar">
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn btn-sm btn-outline-secondary d-lg-none" id="sidebarToggle">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <h1 class="admin-page-title"><%= pageTitle %></h1>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <a href="/" target="_blank" class="btn btn-sm btn-outline-primary d-none d-sm-inline-flex align-items-center gap-2">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <span>Xem Website</span>
+      </a>
+      <div class="dropdown">
+        <button class="btn btn-sm btn-light border dropdown-toggle d-flex align-items-center gap-2" data-bs-toggle="dropdown">
+          <i class="fa-solid fa-circle-user text-primary"></i>
+          <span class="d-none d-md-inline"><%= currentUser ? currentUser.fullName : 'Admin' %></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+          <li><a class="dropdown-item" href="/admin/profile"><i class="fa-solid fa-user-pen me-2 text-primary"></i>Đổi mật khẩu</a></li>
+          <li><a class="dropdown-item" href="/admin/settings"><i class="fa-solid fa-gear me-2 text-primary"></i>Cài đặt chung</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="/admin/logout"><i class="fa-solid fa-power-off me-2"></i>Đăng xuất</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Main Content Area -->
+  <main class="admin-content">
+

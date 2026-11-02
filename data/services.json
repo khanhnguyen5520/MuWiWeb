@@ -1,0 +1,102 @@
+[
+  {
+    "id": "serv-1",
+    "slug": "thiet-ke-website-phan-mem",
+    "title": "Thiết kế Website & Phần mềm theo yêu cầu",
+    "shortDesc": "Xây dựng website chuẩn SEO, web application hiện đại, sàn thương mại điện tử và phần mềm nghiệp vụ chuyên sâu với trải nghiệm người dùng hoàn hảo.",
+    "icon": "fa-laptop-code",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80",
+    "order": 1,
+    "active": true,
+    "priceNote": "Từ 15.000.000 VNĐ",
+    "features": [
+      "Giao diện độc quyền thiết kế riêng theo nhận diện thương hiệu",
+      "Tối ưu 100% Responsive trên Mobile, Tablet và Desktop",
+      "Tối ưu điểm số Google PageSpeed và chuẩn SEO Onpage",
+      "Trang quản trị (CMS) thông minh, dễ dàng cập nhật nội dung",
+      "Tích hợp cổng thanh toán trực tuyến, vận chuyển tự động",
+      "Bảo hành bảo trì trọn đời và sao lưu dữ liệu định kỳ"
+    ],
+    "contentHtml": "\n      <h3>Giải Pháp Thiết Kế Website & Phần Mềm May Đo Cao Cấp</h3>\n      <p>Trong thời đại số hóa hiện nay, website không chỉ là bộ mặt của doanh nghiệp trên Internet mà còn là cỗ máy sinh lời và kênh tiếp cận khách hàng tiềm năng mạnh mẽ nhất. TechVision cung cấp giải pháp thiết kế website và phát triển phần mềm theo yêu cầu đáp ứng hoàn hảo mọi quy chuẩn công nghệ mới nhất.</p>\n      \n      <h4>Ưu điểm nổi bật của dịch vụ:</h4>\n      <ul>\n        <li><strong>Thiết kế UX/UI độc quyền:</strong> Nghiên cứu hành vi người dùng (User Persona) để tạo ra trải nghiệm mượt mà, gia tăng tỷ lệ chuyển đổi đơn hàng.</li>\n        <li><strong>Công nghệ tiên tiến:</strong> Sử dụng các nền tảng và framework hiện đại nhất như Node.js, React, Next.js, Vue, Laravel, đảm bảo tốc độ vượt trội.</li>\n        <li><strong>Chuẩn hóa SEO toàn diện:</strong> Cấu trúc website thân thiện với thuật toán tìm kiếm của Google, giúp từ khóa dễ dàng thăng hạng.</li>\n        <li><strong>An toàn & Bảo mật:</strong> Tích hợp chứng chỉ bảo mật SSL, tường lửa phòng chống tấn công DDoS, mã hóa dữ liệu khách hàng.</li>\n      </ul>\n\n      <h4>Các lĩnh vực chúng tôi chuyên sâu:</h4>\n      <ul>\n        <li>Website giới thiệu tập đoàn, công ty và tổ chức.</li>\n        <li>Hệ thống sàn thương mại điện tử (E-commerce) đa tính năng.</li>\n        <li>Hệ thống học trực tuyến (LMS), booking đặt lịch, sàn bất động sản.</li>\n        <li>Ứng dụng Web App quản lý nội bộ và cổng thông tin Portal.</li>\n      </ul>\n\n      <p>Hãy liên hệ với chúng tôi ngay hôm nay để nhận bản phân tích và demo giao diện miễn phí cho dự án của bạn!</p>\n    "
+  },
+  {
+    "id": "serv-2",
+    "slug": "chuyen-doi-so-erp-crm",
+    "title": "Giải pháp Chuyển đổi số & Quản trị ERP / CRM",
+    "shortDesc": "Số hóa toàn diện quy trình kinh doanh, quản lý quan hệ khách hàng, kho bãi, chuỗi cung ứng, nhân sự và tài chính trên một nền tảng quản trị tập trung.",
+    "icon": "fa-cubes-stacked",
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    "order": 2,
+    "active": true,
+    "priceNote": "Tư vấn & Báo giá theo module",
+    "features": [
+      "Tự động hóa luồng phê duyệt và quy trình làm việc giữa các phòng ban",
+      "Quản lý thông tin & lịch sử chăm sóc khách hàng 360 độ (CRM)",
+      "Quản lý kho hàng thông minh, cảnh báo tồn kho và chuỗi cung ứng",
+      "Quản trị tài chính kế toán, dòng tiền và hóa đơn điện tử",
+      "Dashboard báo cáo thông minh theo thời gian thực (Real-time Analytics)",
+      "Đồng bộ đa nền tảng và phân quyền truy cập bảo mật cao"
+    ],
+    "contentHtml": "\n      <h3>Hệ Thống Quản Trị Doanh Nghiệp Toàn Diện ERP & CRM</h3>\n      <p>Chuyển đổi số không còn là sự lựa chọn mà là con đường bắt buộc để doanh nghiệp tồn tại và bứt phá trong bối cảnh cạnh tranh khốc liệt. Hệ thống ERP & CRM của TechVision giúp đồng bộ hóa mọi mắt xích vận hành của tổ chức.</p>\n      \n      <h4>Phân hệ giải pháp cốt lõi:</h4>\n      <ul>\n        <li><strong>Quản lý Khách hàng (CRM):</strong> Lưu trữ hồ sơ khách hàng tập trung, theo dõi hành trình mua hàng, tự động chăm sóc và nhắc lịch hẹn.</li>\n        <li><strong>Quản lý Bán hàng & Phân phối:</strong> Quản lý đơn hàng, báo giá, hợp đồng và chính sách chiết khấu linh hoạt.</li>\n        <li><strong>Quản trị Chuỗi cung ứng & Kho vận:</strong> Theo dõi nhập xuất tồn kho bằng mã vạch / QR Code, dự báo nhu cầu nhập hàng tự động.</li>\n        <li><strong>Quản lý Nhân sự & Tiền lương (HRM):</strong> Chấm công thông minh, tính lương tự động, đánh giá KPI và quản lý hồ sơ nhân viên.</li>\n        <li><strong>Báo cáo Điều hành (Business Intelligence):</strong> Biểu đồ trực quan giúp ban lãnh đạo đưa ra quyết định nhanh chóng, chính xác.</li>\n      </ul>\n\n      <h4>Lợi ích thực tế mang lại:</h4>\n      <p>Cắt giảm tới 40% chi phí vận hành thủ công, loại bỏ 90% sai sót giấy tờ và tăng tốc độ xử lý đơn hàng lên gấp 3 lần.</p>\n    "
+  },
+  {
+    "id": "serv-3",
+    "slug": "marketing-online-seo",
+    "title": "Digital Marketing & SEO Tổng thể Đột phá",
+    "shortDesc": "Chiến lược tiếp thị số đa kênh toàn diện, tối ưu hóa công cụ tìm kiếm đưa từ khóa lên top bền vững, gia tăng tỉ lệ chuyển đổi đơn hàng vượt bậc.",
+    "icon": "fa-bullhorn",
+    "image": "https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=1200&q=80",
+    "order": 3,
+    "active": true,
+    "priceNote": "Từ 10.000.000 VNĐ / tháng",
+    "features": [
+      "Nghiên cứu thị trường sâu rộng và chân dung khách hàng mục tiêu",
+      "SEO Tổng thể hàng trăm từ khóa lên TOP Google bền vững",
+      "Quản trị & tối ưu chiến dịch quảng cáo Google Ads, Facebook, TikTok",
+      "Sáng tạo nội dung Content Marketing & kịch bản Video Viral hấp dẫn",
+      "Xây dựng hệ thống phễu tiếp thị chuyển đổi tự động (Marketing Automation)",
+      "Báo cáo chỉ số ROI, CPA, CTR minh bạch và cập nhật hàng tuần"
+    ],
+    "contentHtml": "\n      <h3>Chiến Lược Digital Marketing Đột Phá Doanh Số</h3>\n      <p>Sở hữu sản phẩm tốt là chưa đủ, bạn cần đưa sản phẩm đó đến đúng khách hàng có nhu cầu vào đúng thời điểm. Dịch vụ Digital Marketing của TechVision kết hợp giữa chiến lược tiếp thị dữ liệu (Data-driven Marketing) và sự sáng tạo không giới hạn.</p>\n\n      <h4>Dịch vụ của chúng tôi bao gồm:</h4>\n      <ul>\n        <li><strong>Dịch vụ SEO Tổng thể:</strong> Tối ưu cấu trúc On-page, xây dựng Entity uy tín và nội dung chuyên sâu giúp website trụ vững trên trang nhất Google mà không sợ biến động thuật toán.</li>\n        <li><strong>Quảng cáo trả phí hiệu năng cao (Performance Ads):</strong> Thiết lập và tối ưu chiến dịch quảng cáo Google Tìm kiếm, Google Shopping, Facebook Ads, TikTok Ads với chi phí trên mỗi chuyển đổi (CPA) thấp nhất.</li>\n        <li><strong>Sản xuất Nội dung & Truyền thông Xã hội:</strong> Xây dựng kênh Fanpage, TikTok triệu view, bài viết PR báo chí và thiết kế ấn phẩm đồ họa chuyên nghiệp.</li>\n        <li><strong>Chăm sóc & Nuôi dưỡng Khách hàng (Email / Zalo ZNS):</strong> Tự động gửi thông điệp cá nhân hóa tới từng nhóm đối tượng khách hàng.</li>\n      </ul>\n\n      <p>Chúng tôi cam kết số lượng từ khóa lên TOP và doanh số chuyển đổi thực tế bằng hợp đồng rõ ràng.</p>\n    "
+  },
+  {
+    "id": "serv-4",
+    "slug": "ha-tang-cloud-bao-mat",
+    "title": "Điện toán Đám mây & Bảo mật An ninh mạng",
+    "shortDesc": "Tư vấn thiết kế hạ tầng Cloud hiện đại (AWS, GCP, Azure), tối ưu chi phí server, sao lưu dữ liệu tự động và giám sát an toàn thông tin 24/7.",
+    "icon": "fa-cloud-arrow-up",
+    "image": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=1200&q=80",
+    "order": 4,
+    "active": true,
+    "priceNote": "Tùy quy mô hạ tầng",
+    "features": [
+      "Di chuyển hệ thống lên Cloud (AWS, Azure, GCP) mượt mà không gián đoạn",
+      "Thiết lập kiến trúc High Availability chịu tải hàng triệu người dùng",
+      "Tối ưu chi phí hạ tầng Cloud tiết kiệm từ 20% đến 45% mỗi tháng",
+      "Triển khai tường lửa ứng dụng web WAF, chống DDoS chuyên sâu",
+      "Hệ thống sao lưu tự động & kế hoạch khắc phục thảm họa (Disaster Recovery)",
+      "Giám sát hệ thống và cảnh báo bất thường 24/7 theo thời gian thực"
+    ],
+    "contentHtml": "\n      <h3>Hạ Tầng Cloud Ổn Định, Linh Hoạt & An Toàn Tuyệt Đối</h3>\n      <p>Dữ liệu là huyết mạch của doanh nghiệp. Hạ tầng đám mây không chỉ giúp doanh nghiệp linh hoạt mở rộng quy mô mà còn bảo vệ tài nguyên số trước các mối đe dọa an ninh mạng ngày càng tinh vi.</p>\n\n      <h4>Năng lực giải pháp Cloud & Security:</h4>\n      <ul>\n        <li><strong>Cloud Migration:</strong> Lên kế hoạch và thực thi chuyển đổi hệ thống từ máy chủ vật lý lên đám mây với downtime bằng 0.</li>\n        <li><strong>DevOps & CI/CD Automation:</strong> Tự động hóa quy trình đóng gói, kiểm thử và triển khai ứng dụng, rút ngắn chu kỳ phát hành tính năng mới.</li>\n        <li><strong>Bảo mật & Phòng thủ Không gian mạng:</strong> Quét lỗ hổng bảo mật định kỳ, kiểm thử xâm nhập (Penetration Testing), thiết lập chính sách bảo mật Zero Trust.</li>\n        <li><strong>Quản lý & Tối ưu Chi phí FinOps:</strong> Rà soát tài nguyên nhàn rỗi, đề xuất phương án cấu hình tối ưu chi phí cloud hàng tháng.</li>\n      </ul>\n\n      <p>Đội ngũ kỹ sư đạt các chứng chỉ cao cấp nhất của AWS, Google Cloud và Microsoft sẽ luôn túc trực bảo vệ hệ thống của bạn.</p>\n    "
+  },
+  {
+    "id": "serv-5",
+    "slug": "tu-van-dao-tao-it",
+    "title": "Tư vấn Chuyển giao Công nghệ & Đào tạo IT Doanh nghiệp",
+    "shortDesc": "Cung cấp chuyên gia công nghệ đồng hành, đào tạo nâng cao kỹ năng số cho đội ngũ nội bộ, tư vấn kiến trúc phần mềm và thẩm định công nghệ.",
+    "icon": "fa-chalkboard-user",
+    "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
+    "order": 5,
+    "active": true,
+    "priceNote": "Thiết kế riêng theo nhu cầu",
+    "features": [
+      "Đánh giá mức độ trưởng thành số và hiện trạng công nghệ doanh nghiệp",
+      "Xây dựng khung kiến trúc công nghệ phù hợp với chiến lược 5 năm",
+      "Đào tạo kỹ năng ứng dụng Trí tuệ nhân tạo (AI Tools) gia tăng năng suất",
+      "Đào tạo văn hóa an toàn thông tin & phòng chống lừa đảo trực tuyến cho nhân sự",
+      "Tư vấn lựa chọn giải pháp phần mềm phù hợp tránh lãng phí ngân sách",
+      "Cung cấp chuyên gia CTO / IT Director cố vấn định kỳ"
+    ],
+    "contentHtml": "\n      <h3>Đồng Hành Cùng Doanh Nghiệp Nâng Cao Năng Lực Công Nghệ</h3>\n      <p>Công nghệ thay đổi mỗi ngày, nếu đội ngũ nhân sự không kịp thời cập nhật sẽ tạo nên rào cản lớn cho sự phát triển. TechVision mang đến dịch vụ đào tạo thực chiến và cố vấn công nghệ cấp cao cho ban lãnh đạo.</p>\n\n      <h4>Chương trình đào tạo & Chuyển giao:</h4>\n      <ul>\n        <li><strong>Ứng dụng AI & Tự động hóa:</strong> Hướng dẫn nhân viên văn phòng, marketing, kinh doanh làm chủ các công cụ AI (ChatGPT, Midjourney, Make, Zapier) nâng cao hiệu suất làm việc gấp 3 lần.</li>\n        <li><strong>Nhận thức An toàn Thông tin Doanh nghiệp:</strong> Phòng tránh các hình thức tấn công Phishing, Ransomware và bảo vệ thông tin mật của công ty.</li>\n        <li><strong>Thẩm định Công nghệ & Giải pháp:</strong> Hỗ trợ ban giám đốc đánh giá năng lực của các nhà cung cấp phần mềm bên ngoài, tránh rủi ro \"mua hớ\" giải pháp không phù hợp.</li>\n        <li><strong>Chuyển giao Công nghệ & Mã nguồn:</strong> Đào tạo đội ngũ IT nội bộ tiếp quản, bảo trì và phát triển tiếp hệ thống sau khi nghiệm thu dự án.</li>\n      </ul>\n\n      <p>Mỗi khóa đào tạo đều được thiết kế theo đúng bài toán đặc thù của doanh nghiệp bạn với phương pháp học qua thực hành 100%.</p>\n    "
+  }
+]

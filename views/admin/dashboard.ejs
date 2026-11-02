@@ -1,0 +1,225 @@
+<%- include('../partials/admin-header') %>
+<%- include('../partials/admin-sidebar') %>
+
+<!-- STATS CARDS -->
+<div class="row g-4 mb-4">
+  <div class="col-sm-6 col-xl-3">
+    <div class="admin-stat-card">
+      <div>
+        <div class="text-muted small fw-semibold">Tổng Dịch Vụ</div>
+        <div class="fs-2 fw-bold text-dark mt-1"><%= stats.servicesCount %></div>
+        <div class="small text-primary mt-1"><i class="fa-solid fa-layer-group me-1"></i>5 trang dịch vụ</div>
+      </div>
+      <div class="admin-stat-icon blue">
+        <i class="fa-solid fa-cubes"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-xl-3">
+    <div class="admin-stat-card">
+      <div>
+        <div class="text-muted small fw-semibold">Vị Trí Tuyển Dụng</div>
+        <div class="fs-2 fw-bold text-dark mt-1"><%= stats.jobsCount %></div>
+        <div class="small text-success mt-1"><i class="fa-solid fa-briefcase me-1"></i>Đang mở tuyển</div>
+      </div>
+      <div class="admin-stat-icon green">
+        <i class="fa-solid fa-users-line"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-xl-3">
+    <div class="admin-stat-card">
+      <div>
+        <div class="text-muted small fw-semibold">Thư Liên Hệ</div>
+        <div class="fs-2 fw-bold text-dark mt-1"><%= stats.messagesCount %></div>
+        <div class="small text-danger mt-1">
+          <i class="fa-solid fa-bell me-1"></i><%= stats.unreadMessages %> thư chưa đọc
+        </div>
+      </div>
+      <div class="admin-stat-icon amber">
+        <i class="fa-solid fa-envelope-open-text"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-xl-3">
+    <div class="admin-stat-card">
+      <div>
+        <div class="text-muted small fw-semibold">Hồ Sơ Ứng Tuyển</div>
+        <div class="fs-2 fw-bold text-dark mt-1"><%= stats.applicationsCount %></div>
+        <div class="small text-purple mt-1">
+          <i class="fa-solid fa-user-check me-1"></i><%= stats.newApplications %> hồ sơ mới
+        </div>
+      </div>
+      <div class="admin-stat-icon purple">
+        <i class="fa-solid fa-file-invoice"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK ACTIONS & SERVICES OVERVIEW -->
+<div class="row g-4 mb-4">
+  <!-- Quản lý nhanh nội dung các trang -->
+  <div class="col-lg-6">
+    <div class="admin-card h-100">
+      <div class="admin-card-header">
+        <h3 class="admin-card-title"><i class="fa-solid fa-pen-to-square text-primary me-2"></i>Quản Lý Nội Dung Các Trang</h3>
+      </div>
+      <div class="admin-card-body">
+        <div class="list-group list-group-flush">
+          <a href="/admin/pages/home" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
+            <div>
+              <div class="fw-bold text-dark"><i class="fa-solid fa-house text-primary me-2"></i>Chỉnh sửa Trang Chủ</div>
+              <small class="text-muted">Thay đổi Banner, Giới thiệu, Thống kê, Ưu điểm và Quy trình</small>
+            </div>
+            <i class="fa-solid fa-arrow-right text-muted"></i>
+          </a>
+
+          <a href="/admin/services" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
+            <div>
+              <div class="fw-bold text-dark"><i class="fa-solid fa-cubes text-primary me-2"></i>Chỉnh sửa 5 Trang Dịch Vụ</div>
+              <small class="text-muted">Quản lý nội dung chi tiết WYSIWYG, hình ảnh, tính năng và giá</small>
+            </div>
+            <i class="fa-solid fa-arrow-right text-muted"></i>
+          </a>
+
+          <a href="/admin/pages/recruitment" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
+            <div>
+              <div class="fw-bold text-dark"><i class="fa-solid fa-user-plus text-primary me-2"></i>Chỉnh sửa Trang Tuyển Dụng</div>
+              <small class="text-muted">Nội dung văn hóa công ty, chế độ đãi ngộ và môi trường làm việc</small>
+            </div>
+            <i class="fa-solid fa-arrow-right text-muted"></i>
+          </a>
+
+          <a href="/admin/pages/contact" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center py-3">
+            <div>
+              <div class="fw-bold text-dark"><i class="fa-solid fa-headset text-primary me-2"></i>Chỉnh sửa Trang Liên Hệ</div>
+              <small class="text-muted">Hotline, email, địa chỉ văn phòng, mã nhúng Google Maps</small>
+            </div>
+            <i class="fa-solid fa-arrow-right text-muted"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Danh sách 5 dịch vụ đang hoạt động -->
+  <div class="col-lg-6">
+    <div class="admin-card h-100">
+      <div class="admin-card-header">
+        <h3 class="admin-card-title"><i class="fa-solid fa-cubes text-primary me-2"></i>5 Trang Dịch Vụ Hiện Tại</h3>
+        <a href="/admin/services" class="btn btn-sm btn-outline-primary">Quản lý tất cả</a>
+      </div>
+      <div class="admin-card-body p-0">
+        <div class="table-responsive">
+          <table class="table admin-table mb-0">
+            <thead>
+              <tr>
+                <th>Dịch Vụ</th>
+                <th>Giá / Ghi Chú</th>
+                <th>Hành Động</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if (services && services.length) { %>
+                <% services.forEach(function(s) { %>
+                  <tr>
+                    <td>
+                      <div class="fw-bold text-dark">
+                        <i class="fa-solid <%= s.icon || 'fa-cube' %> text-primary me-2"></i><%= s.title %>
+                      </div>
+                      <small class="text-muted">/dich-vu/<%= s.slug %></small>
+                    </td>
+                    <td><span class="badge bg-light text-primary border"><%= s.priceNote || 'Liên hệ' %></span></td>
+                    <td>
+                      <a href="/admin/services/edit/<%= s.id %>" class="btn btn-sm btn-primary py-1 px-2">
+                        <i class="fa-solid fa-pen me-1"></i>Sửa
+                      </a>
+                    </td>
+                  </tr>
+                <% }); %>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RECENT CONTACTS & APPLICATIONS -->
+<div class="row g-4">
+  <!-- Tin nhắn mới nhất -->
+  <div class="col-lg-6">
+    <div class="admin-card">
+      <div class="admin-card-header">
+        <h3 class="admin-card-title"><i class="fa-solid fa-envelope text-primary me-2"></i>Tin Nhắn Khách Hàng Mới Nhất</h3>
+        <a href="/admin/messages" class="btn btn-sm btn-outline-primary">Xem tất cả</a>
+      </div>
+      <div class="admin-card-body p-0">
+        <% if (recentMessages && recentMessages.length > 0) { %>
+          <div class="list-group list-group-flush">
+            <% recentMessages.forEach(function(msg) { %>
+              <div class="list-group-item p-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <strong class="text-dark"><%= msg.name %></strong>
+                  <span class="badge <%= msg.status === 'unread' ? 'bg-danger' : (msg.status === 'replied' ? 'bg-success' : 'bg-secondary') %>">
+                    <%= msg.status === 'unread' ? 'Chưa đọc' : (msg.status === 'replied' ? 'Đã phản hồi' : 'Đã đọc') %>
+                  </span>
+                </div>
+                <div class="small text-muted mb-1">
+                  <i class="fa-solid fa-phone me-1"></i><%= msg.phone %> | <i class="fa-solid fa-envelope me-1"></i><%= msg.email %>
+                </div>
+                <p class="small text-secondary mb-0 text-truncate"><%= msg.message %></p>
+              </div>
+            <% }); %>
+          </div>
+        <% } else { %>
+          <div class="text-center py-4 text-muted small">Chưa có tin nhắn liên hệ nào.</div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hồ sơ ứng tuyển mới nhất -->
+  <div class="col-lg-6">
+    <div class="admin-card">
+      <div class="admin-card-header">
+        <h3 class="admin-card-title"><i class="fa-solid fa-file-lines text-primary me-2"></i>Hồ Sơ Ứng Tuyển Mới Nhất</h3>
+        <a href="/admin/applications" class="btn btn-sm btn-outline-primary">Xem tất cả</a>
+      </div>
+      <div class="admin-card-body p-0">
+        <% if (recentApplications && recentApplications.length > 0) { %>
+          <div class="list-group list-group-flush">
+            <% recentApplications.forEach(function(app) { %>
+              <div class="list-group-item p-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <strong class="text-dark"><%= app.fullName %></strong>
+                  <span class="badge <%= app.status === 'new' ? 'bg-warning text-dark' : 'bg-primary' %>">
+                    <%= app.status === 'new' ? 'Hồ sơ mới' : app.status %>
+                  </span>
+                </div>
+                <div class="small text-muted mb-1">
+                  <i class="fa-solid fa-briefcase text-primary me-1"></i><%= app.jobTitle %> | <i class="fa-solid fa-phone me-1"></i><%= app.phone %>
+                </div>
+                <% if (app.cvPath) { %>
+                  <a href="<%= app.cvPath %>" target="_blank" class="small text-primary fw-semibold">
+                    <i class="fa-solid fa-download me-1"></i>Tải file CV đính kèm
+                  </a>
+                <% } %>
+              </div>
+            <% }); %>
+          </div>
+        <% } else { %>
+          <div class="text-center py-4 text-muted small">Chưa có hồ sơ ứng tuyển nào.</div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/admin-footer') %>
+

@@ -1,0 +1,87 @@
+<%- include('../partials/admin-header') %>
+<%- include('../partials/admin-sidebar') %>
+
+<% if (typeof success !== 'undefined') { %>
+  <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 mb-4" role="alert">
+    <i class="fa-solid fa-circle-check fs-5"></i>
+    <div>
+      <% if (success === 'profile_updated') { %>Cập nhật thông tin tài khoản thành công!<% } %>
+      <% if (success === 'password_changed') { %>Đổi mật khẩu thành công! Hãy ghi nhớ mật khẩu mới của bạn.<% } %>
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+<% if (typeof error !== 'undefined' && error) { %>
+  <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center gap-2 mb-4" role="alert">
+    <i class="fa-solid fa-triangle-exclamation fs-5"></i>
+    <div>
+      <% if (error === 'wrong_current_password') { %>Mật khẩu hiện tại không chính xác! Vui lòng thử lại.<% } %>
+      <% if (error === 'password_mismatch') { %>Mật khẩu mới và xác nhận mật khẩu không khớp nhau!<% } %>
+      <% if (error === 'password_too_short') { %>Mật khẩu mới phải có tối thiểu 6 ký tự!<% } %>
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+<div class="row g-4">
+  <!-- Cột 1: Thông tin cá nhân admin -->
+  <div class="col-lg-6">
+    <div class="admin-card">
+      <div class="admin-card-header">
+        <h3 class="admin-card-title"><i class="fa-solid fa-user-gear text-primary me-2"></i>Thông Tin Quản Trị Viên</h3>
+      </div>
+      <div class="admin-card-body">
+        <form action="/admin/profile" method="POST">
+          <div class="mb-3">
+            <label class="form-label">Tên đăng nhập (Username)</label>
+            <input type="text" class="form-control bg-light" value="<%= user.username %>" readonly>
+            <div class="form-text">Tên đăng nhập cố định của hệ thống.</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Họ và tên hiển thị</label>
+            <input type="text" name="fullName" class="form-control" value="<%= user.fullName %>" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Địa chỉ Email</label>
+            <input type="email" name="email" class="form-control" value="<%= user.email %>" required>
+          </div>
+          <button type="submit" class="btn btn-primary fw-bold">
+            <i class="fa-solid fa-floppy-disk me-1"></i> Cập Nhật Thông Tin
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cột 2: Đổi mật khẩu -->
+  <div class="col-lg-6">
+    <div class="admin-card">
+      <div class="admin-card-header">
+        <h3 class="admin-card-title"><i class="fa-solid fa-key text-primary me-2"></i>Đổi Mật Khẩu Đăng Nhập</h3>
+      </div>
+      <div class="admin-card-body">
+        <form action="/admin/profile/password" method="POST">
+          <div class="mb-3">
+            <label class="form-label">Mật khẩu hiện tại *</label>
+            <input type="password" name="currentPassword" class="form-control" placeholder="Nhập mật khẩu hiện tại" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Mật khẩu mới (tối thiểu 6 ký tự) *</label>
+            <input type="password" name="newPassword" class="form-control" placeholder="Nhập mật khẩu mới" minlength="6" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Xác nhận mật khẩu mới *</label>
+            <input type="password" name="confirmPassword" class="form-control" placeholder="Nhập lại mật khẩu mới" minlength="6" required>
+          </div>
+          <button type="submit" class="btn btn-warning fw-bold text-dark">
+            <i class="fa-solid fa-shield-halved me-1"></i> Đổi Mật Khẩu Ngay
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/admin-footer') %>
+

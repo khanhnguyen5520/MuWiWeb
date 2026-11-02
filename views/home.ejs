@@ -1,0 +1,301 @@
+<%- include('partials/header') %>
+
+<!-- Success Alert if any -->
+<% if (typeof success !== 'undefined' && success === 'consultation') { %>
+  <div class="alert alert-success alert-dismissible fade show container mt-4" role="alert">
+    <i class="fa-solid fa-circle-check me-2"></i><strong>Thành công!</strong> Cảm ơn bạn đã đăng ký tư vấn. Đội ngũ của chúng tôi sẽ liên hệ trong ít phút.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <span class="badge-soft mb-2"><%= home.heroBadge %></span>
+        <h1 class="hero-title"><%= home.heroTitle %></h1>
+        <p class="hero-subtitle"><%= home.heroSubtitle %></p>
+        
+        <div class="d-flex flex-wrap gap-3">
+          <a href="<%= home.heroCtaLink %>" class="btn btn-primary btn-lg d-inline-flex align-items-center gap-2">
+            <span><%= home.heroCtaText %></span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="<%= home.heroSecondaryLink %>" class="btn btn-outline-primary btn-lg">
+            <%= home.heroSecondaryText %>
+          </a>
+        </div>
+
+        <!-- Quick highlights badges -->
+        <div class="mt-4 pt-3 border-top d-flex flex-wrap gap-4 text-muted small">
+          <div><i class="fa-solid fa-circle-check text-success me-1"></i> Tư vấn miễn phí 100%</div>
+          <div><i class="fa-solid fa-circle-check text-success me-1"></i> Cam kết tiến độ & SLA</div>
+          <div><i class="fa-solid fa-circle-check text-success me-1"></i> Bảo hành bảo trì trọn đời</div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="hero-image-wrap">
+          <img src="<%= home.heroImage %>" alt="<%= home.heroTitle %>">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS COUNTER -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row g-4">
+      <% if (home.stats && home.stats.length) { %>
+        <% home.stats.forEach(function(st) { %>
+          <div class="col-6 col-lg-3">
+            <div class="stat-card">
+              <div class="stat-number"><%= st.number %></div>
+              <div class="stat-label"><%= st.label %></div>
+            </div>
+          </div>
+        <% }); %>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="py-5 my-3">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5">
+        <div class="position-relative">
+          <img src="<%= home.aboutImage %>" alt="<%= home.aboutTitle %>" class="img-fluid rounded-4 shadow-lg border">
+          <div class="position-absolute bottom-0 start-0 bg-primary text-white p-3 rounded-3 m-3 shadow d-none d-sm-block">
+            <div class="fw-bold fs-5">Chất lượng hàng đầu</div>
+            <small>Được tin cậy bởi 500+ doanh nghiệp</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <span class="badge-soft mb-2"><%= home.aboutBadge %></span>
+        <h2 class="section-title"><%= home.aboutTitle %></h2>
+        <p class="text-secondary fs-6 mt-3"><%= home.aboutDesc %></p>
+
+        <div class="mt-4">
+          <% if (home.aboutPoints && home.aboutPoints.length) { %>
+            <div class="row g-3">
+              <% home.aboutPoints.forEach(function(pt) { %>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-primary mt-1"></i>
+                    <span class="fw-medium text-dark"><%= pt %></span>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+          <% } %>
+        </div>
+
+        <div class="mt-4 pt-2">
+          <a href="/lien-he" class="btn btn-outline-primary">
+            <i class="fa-solid fa-envelope me-2"></i>Liên Hệ Hợp Tác Ngay
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 DỊCH VỤ CHỦ LỰC (SERVICES SECTION) -->
+<section class="py-5 bg-light" id="dich-vu-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="badge-soft">Dịch Vụ & Giải Pháp</span>
+      <h2 class="section-title">Hệ Sinh Thái Dịch Vụ Công Nghệ Toàn Diện</h2>
+      <p class="section-subtitle">TechVision mang đến 5 nhóm dịch vụ chuyên sâu giúp doanh nghiệp số hóa, gia tăng năng lực cạnh tranh và bứt phá doanh số.</p>
+    </div>
+
+    <div class="row g-4">
+      <% if (services && services.length) { %>
+        <% services.forEach(function(s, index) { %>
+          <div class="<%= index < 2 ? 'col-lg-6' : 'col-lg-4' %>">
+            <div class="service-card">
+              <div class="service-img-wrap">
+                <img src="<%= s.image %>" alt="<%= s.title %>">
+                <div class="service-icon-floating">
+                  <i class="fa-solid <%= s.icon || 'fa-laptop-code' %>"></i>
+                </div>
+              </div>
+              <div class="service-body">
+                <% if (s.priceNote) { %>
+                  <div><span class="service-price"><i class="fa-solid fa-tag me-1"></i><%= s.priceNote %></span></div>
+                <% } %>
+                <h3 class="service-title">
+                  <a href="/dich-vu/<%= s.slug %>"><%= s.title %></a>
+                </h3>
+                <p class="service-desc"><%= s.shortDesc %></p>
+                
+                <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                  <a href="/dich-vu/<%= s.slug %>" class="btn btn-sm btn-outline-primary">
+                    Chi tiết dịch vụ <i class="fa-solid fa-arrow-right ms-1"></i>
+                  </a>
+                  <span class="text-muted small">Dịch vụ 0<%= index + 1 %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      <% } %>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="/dich-vu" class="btn btn-primary btn-lg">
+        <i class="fa-solid fa-layer-group me-2"></i>Xem Bảng Báo Giá & Chi Tiết Tất Cả Dịch Vụ
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US SECTION -->
+<section class="py-5 my-3">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="badge-soft"><%= home.whyBadge %></span>
+      <h2 class="section-title"><%= home.whyTitle %></h2>
+      <p class="section-subtitle"><%= home.whySubtitle %></p>
+    </div>
+
+    <div class="row g-4">
+      <% if (home.whyItems && home.whyItems.length) { %>
+        <% home.whyItems.forEach(function(item) { %>
+          <div class="col-md-6 col-lg-3">
+            <div class="why-card">
+              <div class="why-icon">
+                <i class="fa-solid <%= item.icon %>"></i>
+              </div>
+              <h4 class="fs-5 fw-bold mb-2"><%= item.title %></h4>
+              <p class="text-secondary small mb-0"><%= item.desc %></p>
+            </div>
+          </div>
+        <% }); %>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS WORKFLOW SECTION -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="badge-soft"><%= home.processBadge %></span>
+      <h2 class="section-title"><%= home.processTitle %></h2>
+      <p class="section-subtitle"><%= home.processSubtitle %></p>
+    </div>
+
+    <div class="row g-4">
+      <% if (home.processSteps && home.processSteps.length) { %>
+        <% home.processSteps.forEach(function(step) { %>
+          <div class="col-md-6 col-lg-3">
+            <div class="step-card">
+              <div class="step-number"><%= step.step %></div>
+              <h4 class="fs-5 fw-bold mb-2"><%= step.title %></h4>
+              <p class="text-secondary small mb-0"><%= step.desc %></p>
+            </div>
+          </div>
+        <% }); %>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT JOBS HIGHLIGHT SECTION -->
+<% if (jobs && jobs.length > 0) { %>
+<section class="py-5">
+  <div class="container">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+      <div>
+        <span class="badge-soft">Tuyển Dụng Nhân Tài</span>
+        <h2 class="section-title mb-0">Cơ Hội Gia Nhập Đội Ngũ TechVision</h2>
+      </div>
+      <a href="/tuyen-dung" class="btn btn-outline-primary">
+        Xem tất cả việc làm <i class="fa-solid fa-arrow-right ms-1"></i>
+      </a>
+    </div>
+
+    <div class="row g-4">
+      <% jobs.forEach(function(job) { %>
+        <div class="col-lg-4">
+          <div class="job-card h-100 d-flex flex-direction-column">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <span class="badge bg-primary-subtle text-primary fw-semibold"><%= job.department %></span>
+              <span class="text-muted small"><i class="fa-regular fa-clock me-1"></i><%= job.deadline || 'Đang tuyển' %></span>
+            </div>
+            <h3 class="job-title fs-5">
+              <a href="/tuyen-dung/<%= job.id %>" class="text-dark hover-primary"><%= job.title %></a>
+            </h3>
+            <div class="job-tags my-2">
+              <span class="job-tag"><i class="fa-solid fa-location-dot"></i> <%= job.location %></span>
+              <span class="job-tag"><i class="fa-solid fa-money-bill-wave text-success"></i> <%= job.salary %></span>
+            </div>
+            <p class="text-secondary small mt-2 mb-3 flex-grow-1"><%= job.description %></p>
+            <div class="pt-3 border-top mt-auto">
+              <a href="/tuyen-dung/<%= job.id %>" class="btn btn-sm btn-primary w-100">
+                Ứng Tuyển Ngay <i class="fa-solid fa-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<!-- CTA FORM BANNER -->
+<section class="py-5" id="consultation-form">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <h2 class="mb-3"><%= home.ctaTitle %></h2>
+          <p class="mb-4"><%= home.ctaSubtitle %></p>
+          <div class="d-flex align-items-center gap-4 text-white">
+            <div><i class="fa-solid fa-phone me-2 text-warning"></i>Hotline: <strong><%= settings.hotline %></strong></div>
+            <div><i class="fa-solid fa-envelope me-2 text-warning"></i><%= settings.email %></div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="bg-white p-4 rounded-4 text-dark shadow-lg">
+            <h4 class="fw-bold fs-5 mb-3 text-dark text-center">Để Lại Thông Tin Tư Vấn</h4>
+            <form action="/gui-tu-van" method="POST">
+              <div class="mb-3">
+                <input type="text" name="name" class="form-control" placeholder="Họ và tên của bạn *" required>
+              </div>
+              <div class="mb-3">
+                <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại liên hệ *" required>
+              </div>
+              <div class="mb-3">
+                <select name="service" class="form-select">
+                  <option value="">Chọn dịch vụ bạn quan tâm...</option>
+                  <% if (services && services.length) { %>
+                    <% services.forEach(function(s) { %>
+                      <option value="<%= s.title %>"><%= s.title %></option>
+                    <% }); %>
+                  <% } %>
+                </select>
+              </div>
+              <div class="mb-3">
+                <textarea name="message" class="form-control" rows="2" placeholder="Ghi chú thêm về yêu cầu của bạn (không bắt buộc)"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100 fw-bold py-2">
+                <i class="fa-solid fa-paper-plane me-1"></i> Gửi Yêu Cầu Tư Vấn Miễn Phí
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+

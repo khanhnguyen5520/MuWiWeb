@@ -1,0 +1,258 @@
+<%- include('../partials/admin-header') %>
+<%- include('../partials/admin-sidebar') %>
+
+<% if (typeof success !== 'undefined' && success === 'saved') { %>
+  <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 mb-4" role="alert">
+    <i class="fa-solid fa-circle-check fs-5"></i>
+    <div><strong>Lưu thành công!</strong> Nội dung Trang Chủ đã được cập nhật ngay lập tức lên website.</div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+<form action="/admin/pages/home" method="POST" enctype="multipart/form-data">
+
+  <!-- 1. HERO BANNER -->
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h3 class="admin-card-title"><i class="fa-solid fa-image text-primary me-2"></i>1. Khối Hero Banner Đầu Trang</h3>
+    </div>
+    <div class="admin-card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Huy hiệu nhỏ (Badge)</label>
+          <input type="text" name="heroBadge" class="form-control" value="<%= home.heroBadge %>">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Tiêu đề chính lớn (Hero Title)</label>
+          <input type="text" name="heroTitle" class="form-control" value="<%= home.heroTitle %>" required>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Đoạn phụ đề (Hero Subtitle)</label>
+          <textarea name="heroSubtitle" class="form-control" rows="3"><%= home.heroSubtitle %></textarea>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Chữ nút chính (CTA)</label>
+          <input type="text" name="heroCtaText" class="form-control" value="<%= home.heroCtaText %>">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Link nút chính</label>
+          <input type="text" name="heroCtaLink" class="form-control" value="<%= home.heroCtaLink %>">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Chữ nút phụ</label>
+          <input type="text" name="heroSecondaryText" class="form-control" value="<%= home.heroSecondaryText %>">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Link nút phụ</label>
+          <input type="text" name="heroSecondaryLink" class="form-control" value="<%= home.heroSecondaryLink %>">
+        </div>
+        <div class="col-md-8">
+          <label class="form-label">URL Ảnh Banner (hoặc tải file mới bên dưới)</label>
+          <input type="text" name="heroImageUrl" class="form-control" value="<%= home.heroImage %>">
+          <div class="mt-2">
+            <input type="file" name="heroImage" class="form-control form-control-sm" accept="image/*" data-preview="heroPreview">
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <label class="form-label d-block">Xem trước ảnh</label>
+          <img id="heroPreview" src="<%= home.heroImage %>" alt="Preview" class="rounded border shadow-sm" style="max-height: 120px; max-width: 100%;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. SỐ LIỆU THỐNG KÊ (STATS) -->
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h3 class="admin-card-title"><i class="fa-solid fa-chart-line text-primary me-2"></i>2. Các Chỉ Số Thống Kê Nổi Bật</h3>
+      <button type="button" class="btn btn-sm btn-outline-primary" id="btnAddStat">
+        <i class="fa-solid fa-plus me-1"></i>Thêm chỉ số
+      </button>
+    </div>
+    <div class="admin-card-body">
+      <div id="statsContainer">
+        <% if (home.stats && home.stats.length) { %>
+          <% home.stats.forEach(function(st, idx) { %>
+            <div class="repeatable-item">
+              <button type="button" class="btn btn-sm btn-outline-danger btn-remove-item" onclick="this.closest('.repeatable-item').remove()">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+              <div class="row g-2">
+                <div class="col-md-4">
+                  <label class="form-label">Chỉ số số liệu</label>
+                  <input type="text" name="statNumber" class="form-control" value="<%= st.number %>">
+                </div>
+                <div class="col-md-8">
+                  <label class="form-label">Tên nhãn mô tả</label>
+                  <input type="text" name="statLabel" class="form-control" value="<%= st.label %>">
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. KHỐI GIỚI THIỆU (ABOUT) -->
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h3 class="admin-card-title"><i class="fa-solid fa-building text-primary me-2"></i>3. Khối Giới Thiệu Về Chúng Tôi</h3>
+    </div>
+    <div class="admin-card-body">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label">Huy hiệu</label>
+          <input type="text" name="aboutBadge" class="form-control" value="<%= home.aboutBadge %>">
+        </div>
+        <div class="col-md-8">
+          <label class="form-label">Tiêu đề khối giới thiệu</label>
+          <input type="text" name="aboutTitle" class="form-control" value="<%= home.aboutTitle %>">
+        </div>
+        <div class="col-12">
+          <label class="form-label">Mô tả chi tiết</label>
+          <textarea name="aboutDesc" class="form-control" rows="4"><%= home.aboutDesc %></textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Các điểm nổi bật (Mỗi dòng là 1 gạch đầu dòng)</label>
+          <textarea name="aboutPoints" class="form-control" rows="4"><%= home.aboutPoints ? home.aboutPoints.join('\n') : '' %></textarea>
+        </div>
+        <div class="col-md-8">
+          <label class="form-label">URL Ảnh giới thiệu</label>
+          <input type="text" name="aboutImageUrl" class="form-control" value="<%= home.aboutImage %>">
+          <div class="mt-2">
+            <input type="file" name="aboutImage" class="form-control form-control-sm" accept="image/*" data-preview="aboutPreview">
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <label class="form-label d-block">Xem trước ảnh</label>
+          <img id="aboutPreview" src="<%= home.aboutImage %>" alt="Preview" class="rounded border shadow-sm" style="max-height: 120px; max-width: 100%;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. TẠI SAO CHỌN CHÚNG TÔI (WHY US) -->
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h3 class="admin-card-title"><i class="fa-solid fa-award text-primary me-2"></i>4. Khối Tại Sao Chọn Chúng Tôi (Ưu Điểm)</h3>
+    </div>
+    <div class="admin-card-body">
+      <div class="row g-3 mb-3">
+        <div class="col-md-4">
+          <label class="form-label">Huy hiệu</label>
+          <input type="text" name="whyBadge" class="form-control" value="<%= home.whyBadge %>">
+        </div>
+        <div class="col-md-8">
+          <label class="form-label">Tiêu đề lớn</label>
+          <input type="text" name="whyTitle_main" class="form-control" value="<%= home.whyTitle %>">
+        </div>
+        <div class="col-12">
+          <label class="form-label">Mô tả phụ</label>
+          <input type="text" name="whySubtitle" class="form-control" value="<%= home.whySubtitle %>">
+        </div>
+      </div>
+
+      <div class="border-top pt-3">
+        <h5 class="fw-bold mb-3">4 Mục Giá Trị Khác Biệt:</h5>
+        <% if (home.whyItems && home.whyItems.length) { %>
+          <% home.whyItems.forEach(function(item, idx) { %>
+            <div class="repeatable-item">
+              <div class="row g-2">
+                <div class="col-md-3">
+                  <label class="form-label">Icon FontAwesome</label>
+                  <input type="text" name="whyIcon" class="form-control" value="<%= item.icon %>" placeholder="fa-shield-halved">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Tiêu đề mục <%= idx + 1 %></label>
+                  <input type="text" name="whyTitle" class="form-control" value="<%= item.title %>">
+                </div>
+                <div class="col-md-5">
+                  <label class="form-label">Mô tả ngắn</label>
+                  <input type="text" name="whyDesc" class="form-control" value="<%= item.desc %>">
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. QUY TRÌNH LÀM VIỆC (PROCESS) -->
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h3 class="admin-card-title"><i class="fa-solid fa-list-ol text-primary me-2"></i>5. Khối Quy Trình Làm Việc (4 Bước)</h3>
+    </div>
+    <div class="admin-card-body">
+      <div class="row g-3 mb-3">
+        <div class="col-md-4">
+          <label class="form-label">Huy hiệu</label>
+          <input type="text" name="processBadge" class="form-control" value="<%= home.processBadge %>">
+        </div>
+        <div class="col-md-8">
+          <label class="form-label">Tiêu đề quy trình</label>
+          <input type="text" name="processTitle_main" class="form-control" value="<%= home.processTitle %>">
+        </div>
+        <div class="col-12">
+          <label class="form-label">Mô tả phụ</label>
+          <input type="text" name="processSubtitle" class="form-control" value="<%= home.processSubtitle %>">
+        </div>
+      </div>
+
+      <div class="border-top pt-3">
+        <% if (home.processSteps && home.processSteps.length) { %>
+          <% home.processSteps.forEach(function(step, idx) { %>
+            <div class="repeatable-item">
+              <div class="row g-2">
+                <div class="col-md-2">
+                  <label class="form-label">Số thứ tự</label>
+                  <input type="text" name="stepNumber" class="form-control" value="<%= step.step %>">
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Tên bước <%= idx + 1 %></label>
+                  <input type="text" name="stepTitle" class="form-control" value="<%= step.title %>">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Mô tả bước</label>
+                  <input type="text" name="stepDesc" class="form-control" value="<%= step.desc %>">
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. KHỐI CTA BANNER CUỐI TRANG CHỦ -->
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h3 class="admin-card-title"><i class="fa-solid fa-bullhorn text-primary me-2"></i>6. Khối Kêu Gọi Hành Động (CTA Banner)</h3>
+    </div>
+    <div class="admin-card-body">
+      <div class="row g-3">
+        <div class="col-12">
+          <label class="form-label">Tiêu đề CTA</label>
+          <input type="text" name="ctaTitle" class="form-control" value="<%= home.ctaTitle %>">
+        </div>
+        <div class="col-12">
+          <label class="form-label">Mô tả CTA</label>
+          <textarea name="ctaSubtitle" class="form-control" rows="2"><%= home.ctaSubtitle %></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NÚT LƯU CỐ ĐỊNH -->
+  <div class="sticky-bottom bg-white p-3 border-top rounded-3 shadow-lg d-flex justify-content-between align-items-center mb-4">
+    <span class="text-muted small"><i class="fa-solid fa-circle-info me-1"></i>Thay đổi sẽ được áp dụng trực tiếp lên trang chủ website.</span>
+    <button type="submit" class="btn btn-primary px-4 fw-bold shadow">
+      <i class="fa-solid fa-floppy-disk me-2"></i>Lưu Tất Cả Thay Đổi Trang Chủ
+    </button>
+  </div>
+
+</form>
+
+<%- include('../partials/admin-footer') %>
+

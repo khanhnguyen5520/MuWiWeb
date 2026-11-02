@@ -1,0 +1,132 @@
+<%- include('../partials/admin-header') %>
+<%- include('../partials/admin-sidebar') %>
+
+<% if (typeof success !== 'undefined' && success === 'saved') { %>
+  <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 mb-4" role="alert">
+    <i class="fa-solid fa-circle-check fs-5"></i>
+    <div><strong>Thành công!</strong> Dịch vụ đã được cập nhật nội dung thành công.</div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+<form action="<%= isNew ? '/admin/services/new' : '/admin/services/edit/' + service.id %>" method="POST" enctype="multipart/form-data">
+
+  <div class="row g-4">
+    <!-- CỘT TRÁI (8 COLS): Nội dung chi tiết -->
+    <div class="col-lg-8">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title">
+            <i class="fa-solid fa-pen-nib text-primary me-2"></i>
+            <%= isNew ? 'Thông Tin Dịch Vụ Mới' : 'Nội Dung Chi Tiết Dịch Vụ: ' + service.title %>
+          </h3>
+        </div>
+        <div class="admin-card-body">
+          <div class="mb-3">
+            <label class="form-label">Tên dịch vụ *</label>
+            <input type="text" name="title" class="form-control" value="<%= service.title %>" placeholder="VD: Thiết kế Website & Phần mềm theo yêu cầu" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Đường dẫn thân thiện (Slug URL)</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light text-muted">/dich-vu/</span>
+              <input type="text" name="slug" class="form-control" value="<%= service.slug %>" placeholder="thiet-ke-website-phan-mem">
+            </div>
+            <div class="form-text">Để trống để hệ thống tự tạo tự động từ tiêu đề.</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Mô tả ngắn (Short description) *</label>
+            <textarea name="shortDesc" class="form-control" rows="3" placeholder="Mô tả tóm tắt hiển thị ngoài trang chủ và thẻ dịch vụ..." required><%= service.shortDesc %></textarea>
+          </div>
+
+          <!-- WYSIWYG EDITOR -->
+          <div class="mb-3">
+            <label class="form-label">Nội dung bài viết chi tiết (WYSIWYG Editor) *</label>
+            <div id="editor" style="min-height: 350px;"></div>
+            <!-- Hidden textarea to store and submit HTML -->
+            <textarea name="contentHtml" id="contentHtml" style="display: none;"><%= service.contentHtml %></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Danh sách tính năng / lợi ích nổi bật (Mỗi dòng một mục)</label>
+            <textarea name="features" class="form-control" rows="5" placeholder="Giao diện độc quyền chuẩn UI/UX&#10;Tương thích 100% thiết bị di động&#10;Tối ưu chuẩn SEO..."><%= service.features ? service.features.join('\n') : '' %></textarea>
+            <div class="form-text">Các mục này sẽ hiển thị dạng danh sách tích xanh ở trang chi tiết dịch vụ.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CỘT PHẢI (4 COLS): Cấu hình, ảnh, giá -->
+    <div class="col-lg-4">
+      <!-- Cấu hình hiển thị -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title"><i class="fa-solid fa-gear text-primary me-2"></i>Cấu Hình Dịch Vụ</h3>
+        </div>
+        <div class="admin-card-body">
+          <div class="mb-3">
+            <label class="form-label">Biểu tượng FontAwesome</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="fa-solid <%= service.icon || 'fa-cube' %>"></i></span>
+              <input type="text" name="icon" class="form-control" value="<%= service.icon || 'fa-cube' %>" placeholder="fa-laptop-code">
+            </div>
+            <div class="form-text">VD: fa-laptop-code, fa-cubes-stacked, fa-bullhorn, fa-cloud, fa-chalkboard-user</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Mức giá tham khảo / Ghi chú</label>
+            <input type="text" name="priceNote" class="form-control" value="<%= service.priceNote || '' %>" placeholder="VD: Từ 15.000.000 VNĐ hoặc Tư vấn">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Thứ tự hiển thị (1 - 5)</label>
+            <input type="number" name="order" class="form-control" value="<%= service.order || 1 %>">
+          </div>
+
+          <div class="mb-3">
+            <div class="form-check form-switch mt-2">
+              <input class="form-check-input" type="checkbox" name="active" id="activeSwitch" <%= service.active !== false ? 'checked' : '' %>>
+              <label class="form-check-label fw-semibold" for="activeSwitch">Hiển thị trên website</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hình ảnh đại diện -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title"><i class="fa-solid fa-image text-primary me-2"></i>Hình Ảnh Đại Diện</h3>
+        </div>
+        <div class="admin-card-body">
+          <div class="mb-3">
+            <label class="form-label">URL Hình ảnh</label>
+            <input type="text" name="imageUrl" class="form-control" value="<%= service.image %>">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Hoặc tải file từ máy tính</label>
+            <input type="file" name="image" class="form-control form-control-sm" accept="image/*" data-preview="serviceImgPreview">
+          </div>
+          <div class="text-center p-2 bg-light rounded border">
+            <img id="serviceImgPreview" src="<%= service.image %>" alt="Preview" class="img-fluid rounded object-fit-cover" style="max-height: 180px;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Nút Lưu -->
+      <div class="d-grid gap-2 mb-4">
+        <button type="submit" class="btn btn-primary py-2 fw-bold shadow">
+          <i class="fa-solid fa-floppy-disk me-2"></i><%= isNew ? 'Thêm Dịch Vụ Mới' : 'Lưu Thay Đổi Dịch Vụ' %>
+        </button>
+        <a href="/admin/services" class="btn btn-outline-secondary">
+          <i class="fa-solid fa-arrow-left me-1"></i> Quay lại danh sách
+        </a>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+<%- include('../partials/admin-footer') %>
+

@@ -1,0 +1,103 @@
+[
+  {
+    "id": "job-1",
+    "title": "Senior Fullstack Developer (Node.js & React/Vue)",
+    "department": "Phòng Phát triển Phần mềm",
+    "location": "Hà Nội / Hybrid",
+    "salary": "25 - 45 triệu VNĐ",
+    "type": "Toàn thời gian",
+    "experience": "Từ 3 năm kinh nghiệm",
+    "deadline": "30/11/2026",
+    "active": true,
+    "description": "Tham gia thiết kế kiến trúc và phát triển các hệ thống phần mềm doanh nghiệp quy mô lớn, tối ưu hóa hiệu năng và mở rộng hệ thống microservices.",
+    "requirements": [
+      "Có ít nhất 3 năm kinh nghiệm lập trình với Node.js, Express / NestJS và ReactJS hoặc VueJS",
+      "Thành thạo cơ sở dữ liệu quan hệ (PostgreSQL, MySQL) và NoSQL (MongoDB, Redis)",
+      "Hiểu biết tốt về kiến trúc RESTful API, Microservices và thiết kế hệ thống có khả năng mở rộng cao",
+      "Kinh nghiệm làm việc với Docker, CI/CD và các dịch vụ đám mây AWS là một lợi thế lớn",
+      "Tinh thần trách nhiệm cao, kỹ năng giải quyết vấn đề tốt và làm việc nhóm hiệu quả"
+    ],
+    "benefits": [
+      "Mức lương cạnh tranh, thưởng dự án theo quý và thưởng tháng 13, 14",
+      "Được cấp Macbook Pro mới 100% khi nhận việc",
+      "Gói bảo hiểm sức khỏe Bảo Việt VIP cho bản thân và người thân",
+      "Du lịch nghỉ dưỡng 5 sao 1-2 lần/năm, teambuilding định kỳ",
+      "Hỗ trợ kinh phí thi các chứng chỉ quốc tế và đào tạo chuyên sâu"
+    ]
+  },
+  {
+    "id": "job-2",
+    "title": "Chuyên Viên Digital Marketing & Performance Ads",
+    "department": "Phòng Truyền thông & Tiếp thị",
+    "location": "Hà Nội / TP.HCM",
+    "salary": "15 - 28 triệu VNĐ + Hoa hồng",
+    "type": "Toàn thời gian",
+    "experience": "Từ 2 năm kinh nghiệm",
+    "deadline": "25/11/2026",
+    "active": true,
+    "description": "Lên kế hoạch và trực tiếp vận hành các chiến dịch quảng cáo đa kênh (Google Ads, Facebook Ads, TikTok Ads), tối ưu tỷ lệ chuyển đổi và quản lý ngân sách tiếp thị.",
+    "requirements": [
+      "Tối thiểu 2 năm kinh nghiệm chạy quảng cáo Performance (Google, Meta, TikTok) ngân sách từ 100 triệu/tháng",
+      "Khả năng phân tích số liệu nhạy bén qua Google Analytics 4, Tag Manager và Looker Studio",
+      "Có tư duy sáng tạo nội dung, hiểu tâm lý khách hàng B2B và B2C",
+      "Chủ động, tích cực cập nhật các xu hướng và thuật toán quảng cáo mới",
+      "Kỹ năng lập báo cáo rõ ràng và tư duy tối ưu chi phí theo ROI"
+    ],
+    "benefits": [
+      "Lương cứng hấp dẫn + thưởng phần trăm doanh số theo chiến dịch không giới hạn",
+      "Môi trường năng động, trẻ trung, tự do đề xuất ý tưởng sáng tạo",
+      "Được tài trợ ngân sách test thử các kênh và mô hình tiếp thị mới",
+      "Đầy đủ chế độ BHXH, du lịch hàng năm, phụ cấp ăn trưa và gửi xe"
+    ]
+  },
+  {
+    "id": "job-3",
+    "title": "UI/UX Designer Chuyên Nghiệp",
+    "department": "Phòng Thiết kế Sáng tạo",
+    "location": "Hà Nội / Hybrid",
+    "salary": "18 - 30 triệu VNĐ",
+    "type": "Toàn thời gian",
+    "experience": "Từ 2 năm kinh nghiệm",
+    "deadline": "15/12/2026",
+    "active": true,
+    "description": "Nghiên cứu hành vi người dùng, xây dựng User Flow, Wireframe và thiết kế giao diện UI/UX hoàn chỉnh cho các dự án Web App, Mobile App và Portal doanh nghiệp.",
+    "requirements": [
+      "Thành thạo công cụ Figma, Adobe Creative Cloud, prototyping và xây dựng Design System chuẩn mực",
+      "Có Portfolio các dự án thực tế ấn tượng (bắt buộc gửi kèm khi ứng tuyển)",
+      "Hiểu biết về Responsive Design, Grid system, Accessibility và các nguyên lý UX cơ bản",
+      "Khả năng làm việc chặt chẽ cùng đội ngũ lập trình Frontend để hiện thực hóa bản thiết kế",
+      "Gu thẩm mỹ hiện đại, tinh tế và khả năng bắt kịp xu hướng thiết kế quốc tế"
+    ],
+    "benefits": [
+      "Môi trường sáng tạo, thiết bị màn hình đồ họa chuyên dụng 4K",
+      "Thưởng năng suất theo từng dự án thiết kế hoàn thành xuất sắc",
+      "Thời gian làm việc linh hoạt, hỗ trợ 2 ngày Remote/tháng",
+      "Chế độ đãi ngộ vượt trội, văn hóa tôn trọng sự khác biệt cá nhân"
+    ]
+  },
+  {
+    "id": "job-4",
+    "title": "Chuyên Viên Tư Vấn Giải Pháp Công Nghệ B2B",
+    "department": "Phòng Kinh doanh Doanh nghiệp",
+    "location": "Hà Nội / TP.HCM",
+    "salary": "12 - 20 triệu VNĐ + % Doanh số cao",
+    "type": "Toàn thời gian",
+    "experience": "Từ 1 năm kinh nghiệm",
+    "deadline": "20/12/2026",
+    "active": true,
+    "description": "Tiếp cận khách hàng doanh nghiệp, tư vấn các giải pháp thiết kế website, chuyển đổi số ERP/CRM và dịch vụ Cloud của công ty, đàm phán và ký kết hợp đồng.",
+    "requirements": [
+      "Có ít nhất 1 năm kinh nghiệm kinh doanh B2B hoặc tư vấn bán hàng trong lĩnh vực CNTT / Phần mềm",
+      "Giao tiếp lưu loát, kỹ năng thuyết trình, đàm phán và thuyết phục khách hàng tốt",
+      "Đam mê kinh doanh, chịu được áp lực doanh số và có tinh thần cầu tiến",
+      "Khả năng đọc hiểu tài liệu giải pháp kỹ thuật cơ bản",
+      "Ngoại hình sáng sủa, tác phong chuyên nghiệp"
+    ],
+    "benefits": [
+      "Chính sách hoa hồng lũy tiến cực kỳ cạnh tranh, thu nhập trung bình 30 - 60 triệu/tháng",
+      "Được cung cấp data khách hàng tiềm năng đã có nhu cầu từ bộ phận Marketing",
+      "Đào tạo kỹ năng bán hàng B2B chuyên nghiệp từ các chuyên gia",
+      "Cơ hội thăng tiến lên Trưởng nhóm / Trưởng phòng Kinh doanh sau 6 tháng"
+    ]
+  }
+]

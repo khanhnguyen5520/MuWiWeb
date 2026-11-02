@@ -1,0 +1,142 @@
+{
+  "home": {
+    "heroBadge": "🚀 Tiên phong Công nghệ & Sáng tạo Số",
+    "heroTitle": "Bứt Phá Tăng Trưởng Cùng Giải Pháp Công Nghệ Đột Phá",
+    "heroSubtitle": "Chúng tôi đồng hành cùng doanh nghiệp xây dựng phần mềm hiện đại, tối ưu hóa quy trình vận hành và kiến tạo trải nghiệm khách hàng vượt trội.",
+    "heroCtaText": "Khám Phá Dịch Vụ",
+    "heroCtaLink": "/dich-vu",
+    "heroSecondaryText": "Nhận Tư Vấn Miễn Phí",
+    "heroSecondaryLink": "/lien-he",
+    "heroImage": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80",
+    "stats": [
+      {
+        "number": "10+",
+        "label": "Năm kinh nghiệm thực chiến"
+      },
+      {
+        "number": "500+",
+        "label": "Dự án bàn giao xuất sắc"
+      },
+      {
+        "number": "99%",
+        "label": "Khách hàng hài lòng & gia hạn"
+      },
+      {
+        "number": "50+",
+        "label": "Kỹ sư & chuyên gia công nghệ"
+      }
+    ],
+    "aboutBadge": "Về Chúng Tôi",
+    "aboutTitle": "Đối Tác Chiến Lược Tin Cậy Trong Kỷ Nguyên Số",
+    "aboutDesc": "TechVision Solutions là đơn vị tiên phong cung cấp hệ sinh thái giải pháp số toàn diện. Với năng lực chuyên môn sâu rộng cùng tinh thần tận tâm, chúng tôi biến ý tưởng của bạn thành các sản phẩm công nghệ có giá trị thực tiễn cao.",
+    "aboutImage": "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1000&q=80",
+    "aboutPoints": [
+      "Kiến trúc phần mềm chuẩn quốc tế, bảo mật cao và dễ dàng mở rộng",
+      "Đội ngũ kỹ sư giàu kinh nghiệm thực chiến tại các tập đoàn lớn",
+      "Phương pháp Agile / Scrum minh bạch, báo cáo tiến độ trực quan",
+      "Chính sách bảo hành, bảo trì trọn đời và hỗ trợ kỹ thuật 24/7"
+    ],
+    "whyBadge": "Tại Sao Chọn Chúng Tôi",
+    "whyTitle": "Giá Trị Khác Biệt Tạo Nên Thương Hiệu Uy Tín",
+    "whySubtitle": "Mỗi giải pháp chúng tôi tạo ra đều xuất phát từ sự thấu hiểu sâu sắc nhu cầu kinh doanh của khách hàng.",
+    "whyItems": [
+      {
+        "icon": "fa-shield-halved",
+        "title": "Bảo Mật Cấp Doanh Nghiệp",
+        "desc": "Tuân thủ nghiêm ngặt các tiêu chuẩn an toàn thông tin ISO 27001 và mã hóa dữ liệu đa tầng."
+      },
+      {
+        "icon": "fa-bolt-lightning",
+        "title": "Triển Khai Thần Tốc",
+        "desc": "Quy trình phát triển chuẩn hóa giúp rút ngắn thời gian bàn giao sản phẩm từ 30% đến 50%."
+      },
+      {
+        "icon": "fa-chart-line",
+        "title": "Tối Ưu Hóa Chi Phí & ROI",
+        "desc": "Đầu tư thông minh, loại bỏ chi phí thừa, mang lại hiệu quả tức thì cho hoạt động kinh doanh."
+      },
+      {
+        "icon": "fa-headset",
+        "title": "Hỗ Trợ Kỹ Thuật 24/7",
+        "desc": "Đội ngũ chuyên viên sẵn sàng tiếp nhận và giải quyết mọi sự cố với SLA phản hồi dưới 15 phút."
+      }
+    ],
+    "processBadge": "Quy Trình Làm Việc",
+    "processTitle": "4 Bước Đơn Giản & Hiệu Quả",
+    "processSubtitle": "Quy trình làm việc chuyên nghiệp, rõ ràng từng giai đoạn để đem lại sản phẩm hoàn hảo nhất.",
+    "processSteps": [
+      {
+        "step": "01",
+        "title": "Khảo Sát & Tư Vấn",
+        "desc": "Lắng nghe mục tiêu, phân tích nghiệp vụ và xây dựng giải pháp tối ưu cho doanh nghiệp."
+      },
+      {
+        "step": "02",
+        "title": "Thiết Kế & Lập Kế Hoạch",
+        "desc": "Phác thảo kiến trúc hệ thống, xây dựng giao diện UI/UX trực quan và lộ trình chi tiết."
+      },
+      {
+        "step": "03",
+        "title": "Lập Trình & Kiểm Thử",
+        "desc": "Viết mã nguồn chuẩn hóa, kiểm thử tính năng và hiệu năng liên tục qua các chu kỳ Agile."
+      },
+      {
+        "step": "04",
+        "title": "Bàn Giao & Vận Hành",
+        "desc": "Triển khai hệ thống lên môi trường thực tế, đào tạo người dùng và cam kết hỗ trợ dài hạn."
+      }
+    ],
+    "ctaTitle": "Sẵn Sàng Chuyển Đổi Số Cùng Đội Ngũ TechVision?",
+    "ctaSubtitle": "Liên hệ ngay hôm nay để nhận báo giá chi tiết và tư vấn giải pháp hoàn toàn miễn phí từ các chuyên gia hàng đầu.",
+    "ctaButtonText": "Nhận Tư Vấn Ngay",
+    "ctaButtonLink": "/lien-he"
+  },
+  "recruitment": {
+    "heroBadge": "Gia Nhập TechVision",
+    "heroTitle": "Cùng Kiến Tạo Tương Lai Công Nghệ Đột Phá",
+    "heroSubtitle": "Chúng tôi luôn tìm kiếm những tài năng đam mê công nghệ, khao khát thử thách và sẵn sàng tạo nên sự khác biệt cùng TechVision.",
+    "heroImage": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&q=80",
+    "cultureTitle": "Môi Trường & Văn Hóa Làm Việc Tuyệt Vời",
+    "cultureDesc": "Tại TechVision, con người là tài sản quý giá nhất. Chúng tôi xây dựng môi trường cởi mở, sáng tạo và tôn trọng giá trị cá nhân của mỗi thành viên.",
+    "perks": [
+      {
+        "icon": "fa-sack-dollar",
+        "title": "Thu Nhập Hấp Dẫn & Thưởng Dự Án",
+        "desc": "Lương cạnh tranh theo năng lực, thưởng hiệu quả công việc, thưởng nóng dự án và review lương 2 lần/năm."
+      },
+      {
+        "icon": "fa-graduation-cap",
+        "title": "Đào Tạo & Chứng Chỉ Quốc Tế",
+        "desc": "Tài trợ 100% chi phí thi các chứng chỉ AWS, GCP, PMP, Scrum Master cùng các khóa đào tạo nội bộ."
+      },
+      {
+        "icon": "fa-heart-pulse",
+        "title": "Chăm Sóc Sức Khỏe Toàn Diện",
+        "desc": "Gói bảo hiểm sức khỏe VIP, khám sức khỏe định kỳ hàng năm và câu lạc bộ thể thao sau giờ làm việc."
+      },
+      {
+        "icon": "fa-plane-departure",
+        "title": "Du Lịch & Teambuilding Nghỉ Dưỡng",
+        "desc": "Chuyến du lịch nghỉ dưỡng 5 sao thường niên, hoạt động teambuilding sôi nổi và tiệc công ty hoành tráng."
+      },
+      {
+        "icon": "fa-laptop-code",
+        "title": "Trang Bị Thiết Bị Đỉnh Cao",
+        "desc": "Cấp mới Macbook Pro hoặc máy tính cấu hình cao cùng màn hình 4K cho toàn bộ nhân sự kỹ thuật."
+      },
+      {
+        "icon": "fa-clock",
+        "title": "Linh Hoạt & Cân Bằng Cuộc Sống",
+        "desc": "Thời gian làm việc linh hoạt, chính sách Hybrid Work (kết hợp làm tại văn phòng và Remote) tiện lợi."
+      }
+    ]
+  },
+  "contact": {
+    "heroBadge": "Kết Nối Với Chúng Tôi",
+    "heroTitle": "Chúng Tôi Luôn Lắng Nghe & Sẵn Sàng Hỗ Trợ",
+    "heroSubtitle": "Dù bạn cần tư vấn giải pháp mới hay muốn hợp tác kinh doanh, hãy để lại thông tin, chuyên gia của chúng tôi sẽ liên hệ trong vòng 30 phút.",
+    "formTitle": "Gửi Yêu Cầu Tư Vấn",
+    "formSubtitle": "Vui lòng điền thông tin bên dưới, chuyên viên của chúng tôi sẽ gọi lại tư vấn chi tiết cho bạn.",
+    "infoTitle": "Thông Tin Trụ Sở Chính"
+  }
+}

@@ -1,0 +1,94 @@
+<%- include('../partials/admin-header') %>
+<%- include('../partials/admin-sidebar') %>
+
+<% if (typeof success !== 'undefined' && success === 'saved') { %>
+  <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 mb-4" role="alert">
+    <i class="fa-solid fa-circle-check fs-5"></i>
+    <div><strong>Lưu thành công!</strong> Thông tin Trang Liên Hệ đã được cập nhật.</div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+<form action="/admin/pages/contact" method="POST">
+
+  <!-- Tiêu đề trang liên hệ -->
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h3 class="admin-card-title"><i class="fa-solid fa-heading text-primary me-2"></i>Banner & Tiêu Đề Trang Liên Hệ</h3>
+    </div>
+    <div class="admin-card-body">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label">Huy hiệu nhỏ</label>
+          <input type="text" name="heroBadge" class="form-control" value="<%= contact.heroBadge %>">
+        </div>
+        <div class="col-md-8">
+          <label class="form-label">Tiêu đề lớn</label>
+          <input type="text" name="heroTitle" class="form-control" value="<%= contact.heroTitle %>" required>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Phụ đề mô tả</label>
+          <textarea name="heroSubtitle" class="form-control" rows="2"><%= contact.heroSubtitle %></textarea>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Tiêu đề form liên hệ</label>
+          <input type="text" name="formTitle" class="form-control" value="<%= contact.formTitle %>">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Mô tả phụ dưới form</label>
+          <input type="text" name="formSubtitle" class="form-control" value="<%= contact.formSubtitle %>">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thông tin công ty hiển thị trên trang liên hệ -->
+  <div class="admin-card">
+    <div class="admin-card-header">
+      <h3 class="admin-card-title"><i class="fa-solid fa-address-book text-primary me-2"></i>Thông Tin Trụ Sở & Hotline Doanh Nghiệp</h3>
+    </div>
+    <div class="admin-card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Hotline chính *</label>
+          <input type="text" name="hotline" class="form-control" value="<%= settings.hotline %>" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Số điện thoại kỹ thuật / di động</label>
+          <input type="text" name="phone" class="form-control" value="<%= settings.phone %>">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Email tiếp nhận liên hệ *</label>
+          <input type="email" name="email" class="form-control" value="<%= settings.email %>" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Thời gian làm việc</label>
+          <input type="text" name="workingHours" class="form-control" value="<%= settings.workingHours %>">
+        </div>
+        <div class="col-12">
+          <label class="form-label">Địa chỉ trụ sở chính *</label>
+          <input type="text" name="address" class="form-control" value="<%= settings.address %>" required>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Địa chỉ chi nhánh (nếu có)</label>
+          <input type="text" name="branchAddress" class="form-control" value="<%= settings.branchAddress || '' %>">
+        </div>
+        <div class="col-12">
+          <label class="form-label">Mã nhúng Bản đồ Google Maps (&lt;iframe...&gt;)</label>
+          <textarea name="mapIframe" class="form-control font-monospace small" rows="4"><%= settings.mapIframe || '' %></textarea>
+          <div class="form-text">Vào Google Maps -> Chia sẻ -> Nhúng bản đồ -> Sao chép mã HTML dán vào đây.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-end mb-4">
+    <button type="submit" class="btn btn-primary px-4 fw-bold">
+      <i class="fa-solid fa-floppy-disk me-2"></i>Lưu Thay Đổi Trang Liên Hệ
+    </button>
+  </div>
+
+</form>
+
+<%- include('../partials/admin-footer') %>
+

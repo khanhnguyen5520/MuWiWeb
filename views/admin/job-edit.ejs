@@ -1,0 +1,109 @@
+<%- include('../partials/admin-header') %>
+<%- include('../partials/admin-sidebar') %>
+
+<% if (typeof success !== 'undefined' && success === 'saved') { %>
+  <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 mb-4" role="alert">
+    <i class="fa-solid fa-circle-check fs-5"></i>
+    <div><strong>Thành công!</strong> Đã lưu thông tin tin tuyển dụng.</div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+<form action="<%= isNew ? '/admin/jobs/new' : '/admin/jobs/edit/' + job.id %>" method="POST">
+
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title">
+            <i class="fa-solid fa-briefcase text-primary me-2"></i>
+            <%= isNew ? 'Đăng Vị Trí Tuyển Dụng Mới' : 'Sửa Tin Tuyển Dụng: ' + job.title %>
+          </h3>
+        </div>
+        <div class="admin-card-body">
+          <div class="mb-3">
+            <label class="form-label">Chức danh công việc *</label>
+            <input type="text" name="title" class="form-control" value="<%= job.title %>" placeholder="VD: Senior Frontend Developer" required>
+          </div>
+
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <label class="form-label">Phòng ban *</label>
+              <input type="text" name="department" class="form-control" value="<%= job.department %>" placeholder="VD: Phòng Phát triển Phần mềm" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Địa điểm làm việc *</label>
+              <input type="text" name="location" class="form-control" value="<%= job.location %>" placeholder="VD: Hà Nội / Hybrid" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Mức lương đề xuất *</label>
+              <input type="text" name="salary" class="form-control" value="<%= job.salary %>" placeholder="VD: 25 - 40 triệu VNĐ" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Hình thức làm việc</label>
+              <select name="type" class="form-select">
+                <option value="Toàn thời gian" <%= job.type === 'Toàn thời gian' ? 'selected' : '' %>>Toàn thời gian</option>
+                <option value="Bán thời gian" <%= job.type === 'Bán thời gian' ? 'selected' : '' %>>Bán thời gian</option>
+                <option value="Thực tập sinh" <%= job.type === 'Thực tập sinh' ? 'selected' : '' %>>Thực tập sinh</option>
+                <option value="Freelance / Remote" <%= job.type === 'Freelance / Remote' ? 'selected' : '' %>>Freelance / Remote</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Yêu cầu kinh nghiệm</label>
+              <input type="text" name="experience" class="form-control" value="<%= job.experience %>" placeholder="VD: Từ 2 năm kinh nghiệm">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Hạn nộp hồ sơ</label>
+              <input type="text" name="deadline" class="form-control" value="<%= job.deadline || '' %>" placeholder="VD: 31/12/2026 hoặc Tuyển liên tục">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Mô tả tóm tắt công việc *</label>
+            <textarea name="description" class="form-control" rows="3" placeholder="Mô tả các trọng trách chính..." required><%= job.description %></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Yêu cầu ứng viên (Mỗi dòng một tiêu chí) *</label>
+            <textarea name="requirements" class="form-control" rows="5" placeholder="Có kinh nghiệm 2 năm với ReactJS&#10;Thành thạo Git, RESTful API..." required><%= job.requirements ? job.requirements.join('\n') : '' %></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Quyền lợi & đãi ngộ (Mỗi dòng một mục) *</label>
+            <textarea name="benefits" class="form-control" rows="5" placeholder="Lương tháng 13, thưởng dự án&#10;Gói bảo hiểm VIP..."><%= job.benefits ? job.benefits.join('\n') : '' %></textarea>
+          </div>
+
+          <div class="mb-3">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" name="active" id="jobActive" <%= job.active !== false ? 'checked' : '' %>>
+              <label class="form-check-label fw-semibold" for="jobActive">Đang mở tuyển (Hiển thị trên website)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <h3 class="admin-card-title"><i class="fa-solid fa-paper-plane text-primary me-2"></i>Thao Tác</h3>
+        </div>
+        <div class="admin-card-body">
+          <p class="small text-muted">Tin tuyển dụng sau khi lưu sẽ hiển thị trên trang <code>/tuyen-dung</code> và ứng viên có thể nộp CV trực tuyến.</p>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary py-2 fw-bold shadow">
+              <i class="fa-solid fa-floppy-disk me-2"></i><%= isNew ? 'Đăng Tin Tuyển Dụng' : 'Lưu Thay Đổi' %>
+            </button>
+            <a href="/admin/jobs" class="btn btn-outline-secondary">
+              <i class="fa-solid fa-arrow-left me-1"></i> Hủy & Quay lại
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+<%- include('../partials/admin-footer') %>
+

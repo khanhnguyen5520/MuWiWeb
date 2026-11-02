@@ -1,0 +1,89 @@
+<%- include('../partials/admin-header') %>
+<%- include('../partials/admin-sidebar') %>
+
+<% if (typeof success !== 'undefined') { %>
+  <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 mb-4" role="alert">
+    <i class="fa-solid fa-circle-check fs-5"></i>
+    <div>
+      <% if (success === 'updated') { %>Cập nhật trạng thái tin nhắn thành công!<% } %>
+      <% if (success === 'deleted') { %>Đã xóa tin nhắn thành công!<% } %>
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+<div class="admin-card">
+  <div class="admin-card-header">
+    <div>
+      <h3 class="admin-card-title"><i class="fa-solid fa-envelope text-primary me-2"></i>Hộp Thư Liên Hệ Khách Hàng</h3>
+      <small class="text-muted">Danh sách liên hệ và yêu cầu tư vấn gửi từ trang chủ và trang liên hệ.</small>
+    </div>
+  </div>
+  <div class="admin-card-body p-0">
+    <div class="table-responsive">
+      <table class="table admin-table align-middle">
+        <thead>
+          <tr>
+            <th>Người Gửi & Thời Gian</th>
+            <th>Thông Tin Liên Hệ</th>
+            <th>Dịch Vụ Quan Tâm</th>
+            <th>Nội Dung Tin Nhắn</th>
+            <th>Trạng Thái</th>
+            <th style="width: 140px;" class="text-end">Thao Tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (messages && messages.length) { %>
+            <% messages.forEach(function(msg) { %>
+              <tr>
+                <td>
+                  <div class="fw-bold text-dark"><%= msg.name %></div>
+                  <div class="small text-muted"><%= new Date(msg.createdAt).toLocaleString('vi-VN') %></div>
+                </td>
+                <td>
+                  <div><i class="fa-solid fa-phone text-primary me-1"></i><a href="tel:<%= msg.phone %>" class="text-dark"><%= msg.phone %></a></div>
+                  <% if (msg.email) { %>
+                    <div class="small"><i class="fa-solid fa-envelope text-muted me-1"></i><a href="mailto:<%= msg.email %>" class="text-secondary"><%= msg.email %></a></div>
+                  <% } %>
+                </td>
+                <td>
+                  <span class="badge bg-light text-primary border"><%= msg.service || 'Tư vấn chung' %></span>
+                </td>
+                <td>
+                  <div class="fw-semibold small text-dark"><%= msg.subject %></div>
+                  <div class="text-secondary small" style="max-width: 300px;"><%= msg.message %></div>
+                </td>
+                <td>
+                  <form action="/admin/messages/<%= msg.id %>/status" method="POST" class="d-inline">
+                    <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+                      <option value="unread" <%= msg.status === 'unread' ? 'selected' : '' %>>Chưa đọc</option>
+                      <option value="read" <%= msg.status === 'read' ? 'selected' : '' %>>Đã xem</option>
+                      <option value="replied" <%= msg.status === 'replied' ? 'selected' : '' %>>Đã liên hệ lại</option>
+                    </select>
+                  </form>
+                </td>
+                <td class="text-end">
+                  <form action="/admin/messages/<%= msg.id %>/delete" method="POST" class="d-inline" onsubmit="return confirm('Bạn có chắc muốn xóa tin nhắn này?');">
+                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Xóa tin nhắn">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          <% } else { %>
+            <tr>
+              <td colspan="6" class="text-center py-5 text-muted">
+                <i class="fa-regular fa-folder-open fa-2x mb-2 d-block"></i>
+                Hộp thư trống! Chưa có liên hệ nào từ khách hàng.
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/admin-footer') %>
+

@@ -1,0 +1,11 @@
+[
+  {
+    "id": "user-1",
+    "username": "admin",
+    "passwordHash": "$2b$10$AXhphFv78tlaU4WOh9e8i.j.PUIrHdQyyN2RwqD7y9ZWniKHD6R3q",
+    "fullName": "Quản Trị Viên Hệ Thống",
+    "email": "admin@techvision.vn",
+    "role": "admin",
+    "createdAt": "2026-10-29T08:55:31.586Z"
+  }
+]

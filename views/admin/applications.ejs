@@ -1,0 +1,97 @@
+<%- include('../partials/admin-header') %>
+<%- include('../partials/admin-sidebar') %>
+
+<% if (typeof success !== 'undefined') { %>
+  <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 mb-4" role="alert">
+    <i class="fa-solid fa-circle-check fs-5"></i>
+    <div>
+      <% if (success === 'updated') { %>Cập nhật trạng thái hồ sơ thành công!<% } %>
+      <% if (success === 'deleted') { %>Đã xóa hồ sơ ứng viên thành công!<% } %>
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+<div class="admin-card">
+  <div class="admin-card-header">
+    <div>
+      <h3 class="admin-card-title"><i class="fa-solid fa-id-card text-primary me-2"></i>Danh Sách Hồ Sơ Ứng Tuyển (CV)</h3>
+      <small class="text-muted">Quản lý hồ sơ ứng viên nộp từ trang tuyển dụng, tải CV và chuyển trạng thái phỏng vấn.</small>
+    </div>
+  </div>
+  <div class="admin-card-body p-0">
+    <div class="table-responsive">
+      <table class="table admin-table align-middle">
+        <thead>
+          <tr>
+            <th>Ứng Viên & Thời Gian</th>
+            <th>Vị Trí Ứng Tuyển</th>
+            <th>Thông Tin Liên Hệ</th>
+            <th>Tệp CV</th>
+            <th>Ghi Chú</th>
+            <th>Trạng Thái</th>
+            <th style="width: 100px;" class="text-end">Xóa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (applications && applications.length) { %>
+            <% applications.forEach(function(app) { %>
+              <tr>
+                <td>
+                  <div class="fw-bold text-dark"><%= app.fullName %></div>
+                  <div class="small text-muted"><%= new Date(app.createdAt).toLocaleString('vi-VN') %></div>
+                </td>
+                <td>
+                  <span class="badge bg-primary-subtle text-primary fw-semibold"><%= app.jobTitle %></span>
+                </td>
+                <td>
+                  <div><i class="fa-solid fa-phone text-primary me-1"></i><a href="tel:<%= app.phone %>" class="text-dark"><%= app.phone %></a></div>
+                  <div class="small"><i class="fa-solid fa-envelope text-muted me-1"></i><a href="mailto:<%= app.email %>" class="text-secondary"><%= app.email %></a></div>
+                </td>
+                <td>
+                  <% if (app.cvPath) { %>
+                    <a href="<%= app.cvPath %>" target="_blank" class="btn btn-sm btn-outline-primary py-1 px-2 d-inline-flex align-items-center gap-1">
+                      <i class="fa-solid fa-file-pdf text-danger"></i> Tải CV
+                    </a>
+                  <% } else { %>
+                    <span class="text-muted small">Không có file</span>
+                  <% } %>
+                </td>
+                <td>
+                  <div class="small text-secondary" style="max-width: 250px;"><%= app.note || '—' %></div>
+                </td>
+                <td>
+                  <form action="/admin/applications/<%= app.id %>/status" method="POST" class="d-inline">
+                    <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
+                      <option value="new" <%= app.status === 'new' ? 'selected' : '' %>>Hồ sơ mới</option>
+                      <option value="interviewed" <%= app.status === 'interviewed' ? 'selected' : '' %>>Đã phỏng vấn</option>
+                      <option value="hired" <%= app.status === 'hired' ? 'selected' : '' %>>Trúng tuyển</option>
+                      <option value="rejected" <%= app.status === 'rejected' ? 'selected' : '' %>>Từ chối</option>
+                    </select>
+                  </form>
+                </td>
+                <td class="text-end">
+                  <form action="/admin/applications/<%= app.id %>/delete" method="POST" class="d-inline" onsubmit="return confirm('Bạn có chắc muốn xóa hồ sơ này?');">
+                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Xóa hồ sơ">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          <% } else { %>
+            <tr>
+              <td colspan="7" class="text-center py-5 text-muted">
+                <i class="fa-solid fa-inbox fa-2x mb-2 d-block"></i>
+                Chưa có hồ sơ ứng tuyển nào.
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/admin-footer') %>
+

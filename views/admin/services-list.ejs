@@ -1,0 +1,95 @@
+<%- include('../partials/admin-header') %>
+<%- include('../partials/admin-sidebar') %>
+
+<% if (typeof success !== 'undefined') { %>
+  <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 mb-4" role="alert">
+    <i class="fa-solid fa-circle-check fs-5"></i>
+    <div>
+      <% if (success === 'created') { %>Đã thêm dịch vụ mới thành công!<% } %>
+      <% if (success === 'saved') { %>Đã lưu thông tin dịch vụ thành công!<% } %>
+      <% if (success === 'deleted') { %>Đã xóa dịch vụ thành công!<% } %>
+    </div>
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+<div class="admin-card">
+  <div class="admin-card-header">
+    <div>
+      <h3 class="admin-card-title"><i class="fa-solid fa-cubes text-primary me-2"></i>Danh Sách 5 Trang Dịch Vụ Con</h3>
+      <small class="text-muted">Bạn có thể sửa đổi nội dung bài viết chi tiết, hình ảnh, tính năng hoặc thêm dịch vụ mới bất cứ lúc nào.</small>
+    </div>
+    <a href="/admin/services/new" class="btn btn-primary btn-sm">
+      <i class="fa-solid fa-plus me-1"></i>Thêm Dịch Vụ Mới
+    </a>
+  </div>
+  <div class="admin-card-body p-0">
+    <div class="table-responsive">
+      <table class="table admin-table align-middle">
+        <thead>
+          <tr>
+            <th style="width: 60px;">TT</th>
+            <th style="width: 80px;">Ảnh</th>
+            <th>Tên Dịch Vụ & Đường Dẫn (Slug)</th>
+            <th>Biểu tượng</th>
+            <th>Mức giá / Ghi chú</th>
+            <th>Trạng thái</th>
+            <th style="width: 140px;" class="text-end">Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (services && services.length) { %>
+            <% services.forEach(function(s, index) { %>
+              <tr>
+                <td class="fw-bold text-muted"><%= s.order || (index + 1) %></td>
+                <td>
+                  <img src="<%= s.image %>" alt="<%= s.title %>" class="rounded object-fit-cover" style="width: 50px; height: 40px;">
+                </td>
+                <td>
+                  <div class="fw-bold text-dark"><%= s.title %></div>
+                  <div class="small text-muted">
+                    <a href="/dich-vu/<%= s.slug %>" target="_blank" class="text-decoration-none">
+                      /dich-vu/<%= s.slug %> <i class="fa-solid fa-arrow-up-right-from-square ms-1" style="font-size: 0.75rem;"></i>
+                    </a>
+                  </div>
+                </td>
+                <td>
+                  <span class="badge bg-light text-primary border p-2">
+                    <i class="fa-solid <%= s.icon || 'fa-cube' %> fa-lg"></i>
+                  </span>
+                </td>
+                <td><span class="small fw-semibold text-secondary"><%= s.priceNote || 'Tư vấn' %></span></td>
+                <td>
+                  <% if (s.active !== false) { %>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">Đang hiển thị</span>
+                  <% } else { %>
+                    <span class="badge bg-secondary-subtle text-secondary px-2 py-1">Tạm ẩn</span>
+                  <% } %>
+                </td>
+                <td class="text-end">
+                  <div class="btn-group btn-group-sm">
+                    <a href="/admin/services/edit/<%= s.id %>" class="btn btn-outline-primary" title="Sửa dịch vụ">
+                      <i class="fa-solid fa-pen-to-square"></i> Sửa
+                    </a>
+                    <form action="/admin/services/delete/<%= s.id %>" method="POST" class="d-inline" onsubmit="return confirm('Bạn có chắc chắn muốn xóa dịch vụ này không?');">
+                      <button type="submit" class="btn btn-outline-danger" title="Xóa dịch vụ">
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            <% }); %>
+          <% } else { %>
+            <tr>
+              <td colspan="7" class="text-center py-4 text-muted">Chưa có dịch vụ nào trong hệ thống.</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/admin-footer') %>
+
