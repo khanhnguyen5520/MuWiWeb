@@ -1,49 +1,87 @@
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const bcrypt = require('bcryptjs');
 
-const DATA_DIR = path.join(__dirname, '..', 'data');
+const isVercel = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
 
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+// Seed data directory bundled with the app
+const BUNDLED_DATA_DIR = path.join(__dirname, '..', 'data');
+
+// On Vercel / Serverless, /var/task is read-only, so write to os.tmpdir()
+const WRITABLE_DATA_DIR = isVercel
+  ? path.join(os.tmpdir(), 'data')
+  : BUNDLED_DATA_DIR;
+
+try {
+  if (!fs.existsSync(WRITABLE_DATA_DIR)) {
+    fs.mkdirSync(WRITABLE_DATA_DIR, { recursive: true });
+  }
+} catch (err) {
+  console.warn('Warning: Could not create data directory:', err.message);
 }
 
-// Helpers
-function getFilePath(filename) {
-  return path.join(DATA_DIR, filename);
-}
+// In-memory cache to guarantee fast responses and zero downtime on serverless
+const memoryStore = {};
 
 function readJson(filename, defaultData) {
-  const filePath = getFilePath(filename);
-  if (!fs.existsSync(filePath)) {
-    writeJson(filename, defaultData);
-    return defaultData;
+  if (memoryStore[filename]) {
+    return memoryStore[filename];
   }
-  try {
-    const raw = fs.readFileSync(filePath, 'utf-8');
-    return JSON.parse(raw);
-  } catch (err) {
-    console.error(`Error reading ${filename}:`, err);
-    return defaultData;
+
+  // 1. Try reading from WRITABLE_DATA_DIR first (in case it was updated)
+  const writablePath = path.join(WRITABLE_DATA_DIR, filename);
+  if (fs.existsSync(writablePath)) {
+    try {
+      const raw = fs.readFileSync(writablePath, 'utf-8');
+      const parsed = JSON.parse(raw);
+      memoryStore[filename] = parsed;
+      return parsed;
+    } catch (err) {
+      console.warn(`Error reading ${filename} from writable dir:`, err.message);
+    }
   }
+
+  // 2. Try reading from BUNDLED_DATA_DIR
+  const bundledPath = path.join(BUNDLED_DATA_DIR, filename);
+  if (fs.existsSync(bundledPath)) {
+    try {
+      const raw = fs.readFileSync(bundledPath, 'utf-8');
+      const parsed = JSON.parse(raw);
+      memoryStore[filename] = parsed;
+      return parsed;
+    } catch (err) {
+      console.warn(`Error reading ${filename} from bundled dir:`, err.message);
+    }
+  }
+
+  // 3. Fallback to default data
+  memoryStore[filename] = defaultData;
+  writeJson(filename, defaultData);
+  return defaultData;
 }
 
 function writeJson(filename, data) {
-  const filePath = getFilePath(filename);
-  const tempPath = filePath + '.tmp';
+  // Always update memory store immediately
+  memoryStore[filename] = data;
+
   try {
-    fs.writeFileSync(tempPath, JSON.stringify(data, null, 2), 'utf-8');
-    fs.renameSync(tempPath, filePath);
-    return true;
-  } catch (err) {
-    console.error(`Error writing ${filename}:`, err);
+    if (!fs.existsSync(WRITABLE_DATA_DIR)) {
+      fs.mkdirSync(WRITABLE_DATA_DIR, { recursive: true });
+    }
+    const filePath = path.join(WRITABLE_DATA_DIR, filename);
+    const tempPath = filePath + '.tmp';
     try {
-      fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+      fs.writeFileSync(tempPath, JSON.stringify(data, null, 2), 'utf-8');
+      fs.renameSync(tempPath, filePath);
       return true;
     } catch (e2) {
-      console.error(`Fallback write failed for ${filename}:`, e2);
-      return false;
+      fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+      return true;
     }
+  } catch (err) {
+    console.warn(`Warning: Could not write ${filename} to disk (${err.message}). Using memory store.`);
+    return false;
   }
 }
 

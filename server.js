@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const os = require('os');
 const session = require('express-session');
 const { injectGlobals } = require('./src/auth');
 
@@ -14,7 +15,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 app.use(express.json({ limit: '20mb' }));
 
-// Static files
+// Static files & uploads (support both local public/uploads and Vercel /tmp/uploads)
+const tmpUploads = path.join(os.tmpdir(), 'uploads');
+app.use('/uploads', express.static(tmpUploads));
+app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Session configuration
@@ -62,12 +66,16 @@ app.use((err, req, res, next) => {
   `);
 });
 
-app.listen(PORT, () => {
-  console.log(`=======================================================`);
-  console.log(`🚀 Website đã khởi chạy thành công!`);
-  console.log(`🌐 Trang công khai: http://localhost:${PORT}`);
-  console.log(`🛡️  Trang quản trị: http://localhost:${PORT}/admin`);
-  console.log(`🔑 Tài khoản mặc định: admin  |  Mật khẩu: admin123`);
-  console.log(`=======================================================`);
-});
+module.exports = app;
+
+if (require.main === module && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`=======================================================`);
+    console.log(`🚀 Website đã khởi chạy thành công!`);
+    console.log(`🌐 Trang công khai: http://localhost:${PORT}`);
+    console.log(`🛡️  Trang quản trị: http://localhost:${PORT}/admin`);
+    console.log(`🔑 Tài khoản mặc định: admin  |  Mật khẩu: admin123`);
+    console.log(`=======================================================`);
+  });
+}
 

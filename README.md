@@ -132,6 +132,9 @@ DemoWeb1/
 │       ├── applications.ejs   # Quản lý hồ sơ ứng viên
 │       ├── settings.ejs       # Cài đặt website
 │       └── profile.ejs        # Đổi mật khẩu admin
+├── api/
+│   └── index.js               # Entry point Serverless Function cho Vercel
+├── vercel.json                # Cấu hình routing và bundle tài nguyên cho Vercel
 ├── package.json
 ├── server.js                  # File khởi động máy chủ Express
 └── README.md
@@ -141,22 +144,23 @@ DemoWeb1/
 
 ## 🚀 HƯỚNG DẪN CÀI ĐẶT & CHẠY DỰ ÁN
 
-### Yêu cầu hệ thống:
-- Đã cài đặt [Node.js](https://nodejs.org/) (phiên bản v18 trở lên).
+### 1. Chạy trên máy cục bộ (Local):
+- Yêu cầu: Đã cài đặt [Node.js](https://nodejs.org/) (phiên bản v18 trở lên).
+```bash
+cd d:\WebProject\DemoWeb1
+npm install
+npm start
+```
+Truy cập:
+- Trang người dùng: [http://localhost:3000](http://localhost:3000)
+- Trang admin: [http://localhost:3000/admin](http://localhost:3000/admin) (Tài khoản: `admin` | Mật khẩu: `admin123`)
 
-### Các bước khởi chạy:
-
-1. **Mở terminal (PowerShell / CMD / Bash) tại thư mục dự án:**
-   ```bash
-   cd d:\WebProject\DemoWeb1
-   ```
-
-2. **Cài đặt các gói phụ thuộc (nếu chưa cài):**
-   ```bash
-   npm install
-   ```
-
-3. **Khởi động server:**
+### 2. Triển khai lên Vercel:
+Dự án đã được cấu hình sẵn sàng cho Vercel Serverless:
+1. Đẩy mã nguồn lên GitHub / GitLab / Bitbucket.
+2. Vào Vercel Dashboard -> **Add New Project** -> Chọn repository.
+3. Không cần cấu hình thêm bất kỳ build command hay output directory nào (Vercel tự động nhận diện `vercel.json` và `api/index.js`).
+4. Bấm **Deploy**. Website sẽ hoạt động trực tiếp!
    ```bash
    npm start
    ```

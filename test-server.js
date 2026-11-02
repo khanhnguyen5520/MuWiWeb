@@ -1,12 +1,12 @@
 const http = require('http');
+const app = require('./server.js');
 
 async function runTests() {
-  // Start server on port 3888
-  process.env.PORT = 3888;
-  require('./server.js');
+  const PORT = 3888;
+  const server = app.listen(PORT);
 
-  // Wait 1 second for server to listen
-  await new Promise(r => setTimeout(r, 1000));
+  // Wait 500ms
+  await new Promise(r => setTimeout(r, 500));
 
   const endpoints = [
     '/',
@@ -26,7 +26,7 @@ async function runTests() {
   for (const ep of endpoints) {
     try {
       const res = await new Promise((resolve, reject) => {
-        http.get(`http://localhost:3888${ep}`, (resp) => {
+        http.get(`http://localhost:${PORT}${ep}`, (resp) => {
           let data = '';
           resp.on('data', chunk => data += chunk);
           resp.on('end', () => resolve({ status: resp.statusCode, body: data }));
@@ -48,7 +48,7 @@ async function runTests() {
   // Also test admin redirect when not logged in
   try {
     const res = await new Promise((resolve, reject) => {
-      http.get(`http://localhost:3888/admin`, (resp) => {
+      http.get(`http://localhost:${PORT}/admin`, (resp) => {
         resolve({ status: resp.statusCode, location: resp.headers.location });
       }).on('error', reject);
     });
@@ -63,6 +63,8 @@ async function runTests() {
     failed++;
   }
 
+  server.close();
+
   if (failed === 0) {
     console.log('\n🎉 TẤT CẢ CÁC TRANG ĐÃ TEST THÀNH CÔNG VÀ HOẠT ĐỘNG HOÀN HẢO!');
   } else {
@@ -73,4 +75,3 @@ async function runTests() {
 }
 
 runTests();
-
